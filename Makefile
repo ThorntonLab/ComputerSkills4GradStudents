@@ -11,7 +11,7 @@ all: ${PDFBOOK}
 clean:
 	rm -rf ${PDFBOOK} compskills.Rmd book_output/* *.svg *.png *.o
 
-${PDFBOOK}: ${PYTHONFIGS} ${RMDFILES} ${BIBFILES} ${PYLISTINGS}
+${PDFBOOK}: ${PYTHONFIGS} ${RMDFILES} ${BIBFILES} _bookdown.yml
 	RETICULATE_PYTHON=`which python3` PYTHONPATH=.. r -e 'bookdown::render_book("index.Rmd","bookdown::pdf_book",clean=T)'
 
 # NOTE: the html output depends on the pdf being built

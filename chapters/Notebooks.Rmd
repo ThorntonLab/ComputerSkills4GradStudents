@@ -1,1 +1,1 @@
-# "Lab notebooks" for computational research: Rstudio, Jupyter, JupyterLab
+# "Lab notebooks" for computational research: Rstudio, Jupyter, JupyterLab {#notebooks}

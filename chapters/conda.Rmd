@@ -1,1 +1,1 @@
-# Dependency management using conda
+# Dependency management using conda {#conda}
