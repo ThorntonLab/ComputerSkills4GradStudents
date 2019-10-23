@@ -1,0 +1,24 @@
+--- 
+title: "Computer skills for graduate students"
+author: "Kevin R Thornton"
+date: "`r Sys.Date()`"
+documentclass: book
+site: "bookdown::bookdown_site"
+biblio-style: plainnat.bst
+output:
+    bookdown::pdf_book:
+        keep_tex: yes
+        citation_package: natbib
+        includes:
+            in_headers: preamble.tex
+    bookdown::gitbook:
+        split_by: chapter
+bibliography: [chapters/compskills.bib]
+link-citations: yes
+urlcolor: blue
+---
+
+```{r, echo=FALSE}
+OUTPUT_TYPE <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+```
+

@@ -1,0 +1,16 @@
+rmd_files:
+    latex: ["index.Rmd",
+        "chapters/Preface.Rmd",
+        "chapters/Intro.Rmd",
+        "chapters/Programming.Rmd",
+        "chapters/Git.Rmd",
+        "chapters/Python.Rmd",
+        "chapters/R.Rmd",
+        "chapters/Notebooks.Rmd",
+        "chapters/sqlite3.Rmd",
+        "chapters/Graphics.Rmd",
+        "chapters/conda.Rmd"
+        ]
+output_dir: book_output
+book_filename: compskills.Rmd
+delete_merged_file: True
