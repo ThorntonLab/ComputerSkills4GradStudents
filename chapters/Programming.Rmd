@@ -1,1 +1,377 @@
 # Overview of programming concepts {#programming}
+
+This chapter provides an informal overview of "programming".  Basically, I need to define some terms so that we are all on the same page moving forwards.
+This book has no interest in the debates over different programming paradigms: object-oriented vs functional vs whatever.  Rather, we take a practical approach
+and move on as quickly as possible.
+
+## What is programming?
+
+Programming is writing down a bunch of instructions into a file so that a computer can execute them.  There really isn't much more to it than that.
+Our computers exist to execute the logic that we write down.  If we do a good job, our lives are easier.  If we make a mistake, then we get
+the wrong answer. (Telling right from wrong answers coming out of programs is a key skill for you to develop during your PhD.)
+If we make a really bad mistake, then we may cause harmful side effects like accidentally deleting data or crashing the machine.
+Don't be afraid of mistakes--they are an important part of the process.
+
+### How to learn programming.
+
+Simply put, you will learn the most by doing it.  However, another important way to learn to code is to read code.  Specifically, 
+you want to read code that emphasizes the idiomatic way to do things in your language of choice.  Learning the "R" way to do a task
+or the "Pythonic" way will help you move from writing code that may be ugly but gets the job done to readable and efficient code 
+that you can reuse later.  It is helpful to think of coding as writing, and to remember that writing is re-writing.
+
+If you are entirely new to coding, then I recommend checking out the lessons available from [Software Carpentry](https://software-carpentry.org/).
+
+### Programming at different levels: scripts vs programs
+
+In order to be practical, let's break programming up into two types of tasks.  The first is writing short, focused pieces of code to accomplish
+a specific task.  For example, a `bash` script to automate a set of steps to go from raw data to a final set of results.  Another example 
+would be writing the code to make a figure or table from the output of the previous `bash` script.  These tasks are often implemented as 
+one-off pieces of code that are used for a project and then forgotten about.  (How not to forget about these works, by archiving them
+appropriately, is the topic of Chapter \ref{git}).  Colloquially, these short programs are referred to as "scripts" and writing them
+as "scripting".  This nomenclature is imperfect, however.
+
+The second type of task is to write a general tool for the research community that accomplishes a specific task.  For example,
+a program to align short-read sequence data to a reference genome (@Li2009-th,@Li2013-lh) or a program to simulate genetic
+data under explicit evolutionary models [@Kelleher2016-cb].  A related task involves writing a high quality *library* of reusable
+code that other researchers may use.  One example of such a product is the [bioconductor](https://www.bioconductor.org/) package for the `R`
+programming language.
+
+This class is about the former, although many concepts will apply to the latter.  In general, teaching about the standards required for
+a general-purpose tool to have impact is beyond the scope of this course.
+
+## What language should I learn?
+
+Unfortunately, the answer to this question often devolves into "language war" polemics.  "Language *X* sucks because of *Y*", etc..
+These arguments are unhelpful beyond getting lots of retweets or visits to your blog.  The reality is that you will probably
+be best off with some skills from a few languages rather than a mastery of a single one.  Here, we take a practical approach
+and focus on two languages that are popular in "data science" circles.  These are Python and R, which we introduce in
+Chapters \ref{Python} and \ref{R}.  I give some guidance regarding language choice beyond these two in Section \ref{languagetypes}
+below and in Appendix \ref{otherlanguages}.
+
+## Where to get help?
+
+Like many tasks related to research, programming can be frustrating.  Why does *X* not work, etc.?  Many of you are familiar with online sources of
+help, such as [stack overflow](http://www.stackoverflow.com).  These sources tend to be moderated Q&A forums where volunteers respond to
+questions from the community.  These resources are invaluable, but are often imperfect.  Answers can be old, out-of-date, or even wrong.
+Often, out-of-date and wrong go together, as the answer refers to an old version of the language/library/etc. being asked about.
+It can be quite hard for newcomers to tell good from bad answers. It is also important to not get distracted by discussion threads
+that go down a rabbit hole of pedantry.  A semi-reliable indicator of a good answer is a question that generated
+a lot of conversation resulting in an "accepted" answer with hundreds of votes.  Definitely use these sites, but keep your critical
+hat on while looking at the answer.  Don't just copy/paste and pray that your problems have been solves. Rather, try to understand
+why the solution works.  And, if you do get a solution there, make a note of it in your code so that future you knows where it came from!
+
+My personal opinion is that good books are invaluable resources. They are often written by language experts and thus focus on the idiomatic
+way to do things.  In later chapters, I will give citations to good books and, when possible, give you links to free versions of those books
+when they do not violate copyright.
+
+## Basic programming concepts
+
+### Compiled versus interpreted languages {#languagetypes}
+
+It is helpful to subdivide programming languages by what happens to the files you write.   For many languages, your code is
+*compiled* from a somewhat human-readable syntax into a machine-readable format that is then executed.  For other languages,
+your code is processed by an *interpreter* and then executed.
+
+Python and R, the languages emphasizes here, are interpreted languages, which is important.  First, it means that the speed
+at which your code runs *may* be slow relative to the same code written in a compiled language.  However, it is often
+faster to write code in interpreted languages.  Such languages often have a richer, more readable syntax than compiled languages,
+and they often have more features built-in to their standard libraries (see \ref{stdlib} below).  You also don't have to wait
+for your program to compile every time you change something.  Compile times can be substantial for some languages like C++.
+
+For most of your work, I will wager that the performance of interpreted languages is more than sufficient most of the time.  In fact,
+the internal guts of most interpreted languages are written in high-performance compiled languages like C when performance
+matters.  For example, R's linear algebra support is all written in C, which is completely hidden from the user who only
+sees a set of R functions.  In Chapters \ref{Python} and \ref{R}, I'll give some hints about what to do if you run into
+performance bottlenecks.
+
+One nice feature of interpreted languages is that they can be used two ways.  You can write all of your code in a file, 
+and then run it.  Or, you can use the language's interactive shell environment to enter commands and to exploratory analysis
+in real time.  These shells allow the languages to be parts of notebooks, which are the topic of Chapter \ref{notebooks}.
+
+### "Standard" libraries {#stdlib}
+
+The standard library of a language are the features that come with a "plain" installation of the language.  In other words, if
+you install R or Python, by definition you get a certain set of features.  Features are added to languages via *libraries*,
+which may go by synonyms such as packages, modules, or frameworks, depending on the nomenclature traditions of the language.
+
+A big plus of Python and R is that they have rich standard libraries, which is typical of interpreted languages.  For example,
+R has built-in support for high-performance linear algebra operations.  The C programming language, which is compiled, has
+no such support, and one needs to depend on third-party packages adding those features, such as the
+[GNU Scientific Library](https://www.gnu.org/software/gsl/).
+
+The standard features of a standard library differ from language to language.  There are no rules.  R has built-in support
+for graphics, which makes a lot of sense.  R is, after all, primarily a language for statistics.  In Python, you need
+[matplotlib](http://www.matplotlib.org) to start making plots.  To get the same linear algebra capabilities in Python that you have
+in R, you need [numpy](http://www.numpy.org).
+
+### The components of programming languages
+
+We now turn to the anatomical elements of programming languages.  While these concepts are pretty universal, we have to pick a language
+to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
+Python is a bit funky at first.
+
+#### Variables
+
+Programming languages use variables to store information and associate it with a name:
+
+```{r}
+x <- 5
+print(x)
+```
+
+Idiomatically, R uses this wacko `<-` syntax for variable assignment.  In fact, this arrow used to be a button on older computers, which is 
+where R gets it from.  Pretty much every other language on the planet uses `=` for assignment.  I will admit to never using `<-` in my 
+own R code, which will make me the subject of abuse on Twitter if word got out!  There are [cases](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
+where it matters which assignment method you use, but I've decided not to worry about it.  Twitter flame wars aside,
+this seems like a small point, but it is an example of how there are many nearly equivalent ways of doing the same thing in any language.
+
+##### "Null" and other special values.
+
+We need a way to express the concept of a variable being undefined.  These "null" values can represent that a variable is undefined, or
+has a value that resulted from a domain error in a mathematical calculation.  For example, in R, the NULL value is `NA`:
+
+```{r}
+a <- NA
+```
+
+There is also a representation of infinity and negative infinity:
+
+```{r}
+b <- Inf
+c <- -Inf
+```
+
+Functions exist to check these values.  In R,
+
+```{R}
+is.na(a)
+is.na(b)
+is.infinite(b)
+is.infinite(c)
+```
+
+##### Objects
+
+The variable `x` above refers to a simple integer.  In R, it has a `numeric` type:
+
+```{r}
+print(class(x))
+```
+
+It is common for programming languages to support more complex types, variably referred to as `structs` (structures), `classes`, or some other
+term meaning a more complex data type than a simple number or character.  We will introduce these in later chapters as needed, as
+the details are language-specific.
+
+#### Mathematical operations
+
+We often need to do math on our numeric variables.  The syntax is usually intuitive:
+
+```{r}
+y <- 2
+# addition
+z <- x + y
+# subtraction
+z <- x - y
+# multiplication
+z <- x * y
+# division
+z <- x/y
+```
+
+
+
+#### Flow control
+
+For our purposes, computers are simply logic execution boxes.  They do what we tell them to, and we can affect how, when, and
+even if a chunk of code is executed via various "flow control" mechanisms.
+
+We can execute code if and only if a certain condition is met:
+
+```{r}
+if (x == 5)
+{
+    print("Yes, x is indeed 5!")
+} else {
+    print("No, sorry!")
+}
+```
+
+Languages also provide `for` and `while` loops for flow control:
+
+```{r}
+for (i in 1:5)
+{
+    if (i %% 2 == 0.0)
+    {
+        print(paste(i,"is even"))
+    } else {
+        print(paste(i,"is odd"))
+    }
+}
+```
+
+The above is equivalent to:
+
+```{r}
+i = 1
+while (i < 6)
+{
+    if (i %% 2 == 0.0)
+    {
+        print(paste(i,"is even"))
+    } else {
+        print(paste(i,"is odd"))
+    }
+    i = i + 1
+}
+```
+
+By the way, you just learned that `%%` is R's "modulo" operator, which means that `a %% b` returns the remainder of `a/b`.
+
+The various methods of flow control can be mixed, matched, and intermingled.
+
+#### Functions
+
+A fundamental method for organizing code is to write *functions* to perform specific tasks:
+
+```{r}
+addtwo <- function(x, y)
+{
+    return (x + y)
+}
+
+x = addtwo(3,-11)
+print(x)
+```
+
+The way to read the above code is, "There is a function called `addtwo` that takes two arguments, `x` and `y`. The function returns a single value."
+
+Functions are useful because they can make the logic of a program easier to read.  The following is 
+pseudocode:
+
+```{r, eval=F}
+filename = "datafile.txt"
+z = setup(filename)
+if (!is.na(z))
+{
+    process_data(z)
+} else {
+    stop("Oops--there is an error!")
+}
+```
+
+#### Comments
+
+All languages support the inclusion of lines of text that are not evaluated as code.  These lines are 
+called "comments".  Comments are useful to documenting especially tricky logic, or the fact that
+you changed something at a certain time, or where you got the idea for the code from:
+
+```{r}
+# The implementation of foo
+# inspired by (link to, say, stack overflow)
+foo <- function(x)
+{
+    # ...
+}
+```
+
+In R and Python, comments begin with a hash sign (\#).
+
+In many languages, include Python and R, it is possible to generate documentation for code directly from the comments.  
+
+#### Error handling
+
+Things go wrong when programs run.  Languages provide means of handling those errors.  Above, we saw
+the R function `stop`, which is used to signal that an error has occurred, printing the message provided.
+
+Error handling is an important part of "defensive programming", which I discuss more below.
+
+
+#### Getting help
+
+R and Python have built-in help systems.  For example, if you don't know what `is.na` does in the above block,
+the following command will show you the help page:
+
+```{r}
+help(is.na)
+```
+
+## General advice
+
+### RTFM
+
+**R**ead **t**he **F**ull **M**anual.  You'll see this acronym out there a lot, and it is good advice, although
+it is crude.  Basically, make sure you read the documentation for the functions you are using.
+What does a function do?  What guarantees does it make?  What side effects are there?
+
+An example of where this matters is described [here](https://i-programmer.info/news/231-methodology/13188-python-script-invalidates-hundreds-of-papers.html).  A function in the Python standard library resulted in different answers on different operation systems, causing
+a large number of scientific papers to report incorrect results.  The reason is a failure to RTFM.  The method used
+to find the files on the computer is documented as returning them in "an arbitrary order", which should have been an immediate
+red flag.  Thanks to Edwin Solares for pointing this out to me.
+
+### Write functions
+
+In R and Python, you can write your script "top to bottom" as a list of instructions to execute.  Doing so is *totally fine*!
+However, it breaks down the longer your script gets.  Almost any top-to-bottom logic can be rewritten as a set of smaller
+functions.  It takes more time, but it forces you to think about what you are doing at each step, it makes error handling
+easier, and it makes it easier for your colleagues and future you to understand your code six months later.
+
+### Keep functions short
+
+Ideally, a function does three things:
+
+1. Checks that the arguments passed in are okay.  If not, signal some kind of error.
+2. Perform a single task given the input arguments.  If the task goes badly, signal some kind of error
+3. Optionally, return some data back to where the function was called from.
+
+This advice is related to some trendy jargon called the "one responsibility principle".
+
+Related advice is to name your functions clearly after what they are doing!  For example, this is unreadable:
+
+```{r}
+x <- function(y)
+{
+}
+
+z <- function(a, b, c)
+{
+}
+```
+
+You need quite a few comments to understand what these functions do!
+
+### Expect errors and test for them
+
+It is really helpful to be able to catch errors where they happen and report the error.  When processing big data sets,
+you may come across unexpected input like missing data, etc., that your code doesn't handle.  With time, you'll learn
+how to test for these things and automatically write functions that return error messages as early as possible.
+
+When working on shared clusters like the UCI HPC, error checking is paramount!  It is really easy for your work to fail "silently"
+because the error message was suppressed.
+
+The next chapters will have more on this topic.
+
+### Editing code
+
+A good "programmer's" text editor is essential.  Like choosing a programming language, editor choice is prone to pointless online
+debate.  However, there are some objective truths: word processors are not acceptable!  You **must** use an editor that saves files
+in plain text, preferably with Unix newline characters (otherwise your life will be hard on the cluster).  The two classics are 
+[emacs](https://www.gnu.org/software/emacs/) and [vim](http://www.vim.org).  I used emacs for about 15 years before pain (google "emacs 
+pinky") caused me to switch to vim, and specifically to [neovim](http://neovim.io).
+
+Other options that people like include, but are not limited to:
+
+* [atom](https://atom.io/)
+* [Microsoft VS code](https://code.visualstudio.com/)
+
+### Ergonomics
+
+Make sure you have a proper chair.  Get your monitor set up to the right height.  You probably really like the freedom of a laptop,
+but don't forget that it is really bad for you in the long run!  The monitor is making you crane your neck, and the keyboard has you
+twisting your wrists at a funny angle.  The taller you are, and the broader your shoulders, the worse all of this is.
+All of these issues will catch up to you, eventually. 
+
+This paragraph is one of the few product endorsements in this book.  The [Ergodox EZ](http://www.ergodox-ez.com) keyboard is absolutely
+worth the money.  It will, however, slow you down for a while until you get used to the layout.  For portable computing, the 
+[Planck EZ](https://ergodox-ez.com/pages/planck) from the same company is great to type with, although you would not expect it based
+on its small size.  I've been dealing with carpal tunnel and related issues since about 2001, and these keyboards make a huge difference.

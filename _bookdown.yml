@@ -9,7 +9,9 @@ rmd_files:
         "chapters/Notebooks.Rmd",
         "chapters/sqlite3.Rmd",
         "chapters/Graphics.Rmd",
-        "chapters/conda.Rmd"
+        "chapters/conda.Rmd",
+        "appendix/Appendix.Rmd",
+        "appendix/OtherLanguages.Rmd"
         ]
 output_dir: book_output
 book_filename: compskills.Rmd
