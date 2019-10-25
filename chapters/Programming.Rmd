@@ -110,9 +110,19 @@ We now turn to the anatomical elements of programming languages.  While these co
 to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
 Python is a bit funky at first.
 
+#### Types {#types}
+
+##### Scalars
+
+##### Arrays
+
+##### Strings
+
+##### Associative containers
+
 #### Variables
 
-Programming languages use variables to store information and associate it with a name:
+Programming languages use variables to store type information and associate it with a name:
 
 ```{r}
 x <- 5
