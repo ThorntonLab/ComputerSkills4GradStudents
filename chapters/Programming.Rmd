@@ -302,7 +302,7 @@ Error handling is an important part of "defensive programming", which I discuss 
 R and Python have built-in help systems.  For example, if you don't know what `is.na` does in the above block,
 the following command will show you the help page:
 
-```{r}
+```{r, eval=F}
 help(is.na)
 ```
 
