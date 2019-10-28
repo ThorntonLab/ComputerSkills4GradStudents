@@ -16,6 +16,11 @@ It is becoming more common to require that code used for research be made public
 need to be familiar with the various websites offering free services for code sharing.  These topics are covered
 in Chapter \ref{git}.
 
+Please read the chapter on objectives and expectations for the course, Chapter \ref{learningobjectives}.  Bear
+in mind that this is a single ten week course on a huge topic. Thus, we cannot do everything.  In fact, we have
+to completely punt on a lot of interesting and fun stuff!  Where possible, I mention such things and note that they are 
+*BTS*, or beyond the scope of this course.
+
 It is useful to keep in mind the ultimate goal of our research, which is to communicate it.  This communication
 will take on many forms, from making plots (or tables) for yourself, for lab meeting, for a meeting with your advisor, for
 presentation at a conference, for publication, etc..  The "quality" required (in terms of the clarity and technical detail

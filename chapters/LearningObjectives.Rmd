@@ -1,0 +1,54 @@
+# Learning objectives for this class {#learningobjectives}
+
+## Expectations for a "hackathon"-style course
+
+The majority of this course is a "learn by doing" or "hackathon" experience. During the "lecture", I'll introduce a topic
+or set of topics.  In the "lab", you will work on problems related to these topics.  Given that we cannot possibly 
+teach you everything via the lectures, a lot of the learning comes from having to solve problems in real time in lab.
+Thus, you'll get what you put in.
+
+To make progress, you'll need a computer capable of doing the labs (see Chapter \ref{requirements}).  We also expect that
+you are proficient in the material covered in the prerequisite course taught by J.J. Emerson.  Although we do let students
+in who have not taken the prerequisite, we reserve the right to monitor your progress.  If someone is taking up more than
+their fair share of the instructor's/TA's time due to a lack of background, then that person may be asked to leave the course.
+
+Briefly, the topics covered in the previous class are:
+
+* **TBD**
+
+## What you will not get from this course
+
+When we poll students about their interests in "bioinformatics", the message is that we need a full curriculum spread over two
+years in order to satisfy everyone.  Given that such a curriculum is not possible, we have to distill things down to the 
+"elements" of computational skills for graduate students in the biological sciences.  Thus, we will not teach you how
+to program.  We probably will not teach you how to analyze your data.  We will not teach you the detailed ins and
+outs of `git`, `ggplot2`, or some specific piece of bioinformatics software and what all of its options mean.  Such topics 
+are *beyond the scope* (BTS) of this course.  Further, if we spent time teaching you how to use a specific RNA-seq
+data aligner, then we may be doing you more harm than good, as that tool may be out of date/fashion by the time you
+are writing your first paper.  The same is true of programming languages.  While I find it hard to believe that Python
+will not widely used in ten years, we were all saying the same thing about `perl` when I was a graduate student.  However,
+`perl` has fallen far from its former position as **the** programming language for bioinformatics, having been largely replaced
+by Python and/or R about ten years ago.  In fact, one of the issues that hampers training graduate students is that your 
+advisors tend not to keep refining their own skill sets throughout their careers, making it difficult to train students
+starting their own research careers in an era when the languages and idioms that the PI knows are no longer in wide use.
+(The same is true of lab techniques, although there is more of a bias in the life sciences for staying familiar with
+the latest in that area.)
+
+## What you should expect from this course
+
+By the end of the first half of this course, you should be able to perform all of the following tasks:
+
+* Create `git` repos and commit changes to files.  You should be able to `pull`/`clone` to/from multiple sources.  For example, you should 
+  be comfortable `push`ing from your laptop to `GitHub` and then `pull` from `GitHub` to HPC.
+* Submit single and array jobs to HPC.
+* Use Rstudio and/or Jupyter (or Jupyter Lab) to generate "reports" of your research.
+* Manage dependencies using `conda`.  You should know how to create environments and how to "dump" the contents of an environment to a file.
+* You should know what tools are out there for preparing figures for various sorts of research communication tasks, and have some sense
+  of the strengths and weaknesses of each.
+
+More generally:
+
+* You should have an expanded awareness of what Python and R can do for you.
+* You should know what you don't know, but know how to figure it out and/or get help.  This is perhaps the most important outcome!
+* You should be better able to search the web for help.
+* You will hopefully develop the habit of starting any new task with a `git init` command!
