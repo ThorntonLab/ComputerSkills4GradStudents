@@ -104,7 +104,7 @@ for graphics, which makes a lot of sense.  R is, after all, primarily a language
 [matplotlib](http://www.matplotlib.org) to start making plots.  To get the same linear algebra capabilities in Python that you have
 in R, you need [numpy](http://www.numpy.org).
 
-### The components of programming languages
+### The components of programming languages {#components}
 
 We now turn to the anatomical elements of programming languages.  While these concepts are pretty universal, we have to pick a language
 to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
@@ -305,6 +305,12 @@ the following command will show you the help page:
 ```{r, eval=F}
 help(is.na)
 ```
+
+### Programming idioms {#programmingidioms}
+
+#### split/apply/combine {#splitapplycombine}
+
+See @Wickham2011-lt for discussion.
 
 ## General advice
 

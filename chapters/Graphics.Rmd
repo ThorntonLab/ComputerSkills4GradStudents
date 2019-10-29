@@ -1,1 +1,7 @@
 # Generating graphics to report your research {#graphics}
+
+## R
+
+### ggplot2 {#ggplot2}
+
+## Python
