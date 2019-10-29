@@ -306,9 +306,9 @@ the following command will show you the help page:
 help(is.na)
 ```
 
-### Programming idioms {#programmingidioms}
+## Programming idioms {#programmingidioms}
 
-#### split/apply/combine {#splitapplycombine}
+### split/apply/combine {#splitapplycombine}
 
 See @Wickham2011-lt for discussion.
 
