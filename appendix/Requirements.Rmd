@@ -1,1 +1,20 @@
-# Necessary hardware and software {#requirements}
+# Necessary hardware and operating system {#requirements}
+
+This class requires a laptop for the labs.  The idea is that using your own machine simulates a 
+more realistic experience of getting research computing done.
+
+Life will be easier if you have a machine that either is, or can emulate, a Unix-like environment.
+In order of ease of use, the following operating systems will work:
+
+* Linux.  Basically any up-to-date release of any distribution.  Please be sure to 
+  have Python 3 installed.  Most distros default to Python 2, and 3 must be installed separately.
+* Apple's OS X.  Preferably High Sierra or later.  A serious complication is that the file system
+  is not case-sensitive, meaning that `File.txt` and `file.txt` are treated as the same thing.
+  You absolutely *must* have the appropriate version of `Xcode` installed for your system and have
+  taken the extra steps to install the command line tools for that version of `Xcode`.  It is
+  up to you to look up the required steps for that.
+* Windows.  If you use Windows, you will have the toughest time.  I think, but am not totally sure,
+  that you will need Windows 10 (or later).  There are a variety of "terminal emulators" for Windows,
+  and it will be up to you to find one that works.  Windows 10 supports the "Windows Subsystem 
+  for Linux", which provides things like a `bash` shell in an environment based on the Ubuntu Linux
+  distribution.
