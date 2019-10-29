@@ -2,6 +2,7 @@ rmd_files:
     latex: ["index.Rmd",
         "chapters/Preface.Rmd",
         "chapters/Intro.Rmd",
+        "chapters/LearningObjectives.Rmd",
         "chapters/Programming.Rmd",
         "chapters/Python.Rmd",
         "chapters/R.Rmd",
@@ -11,6 +12,7 @@ rmd_files:
         "chapters/Graphics.Rmd",
         "chapters/conda.Rmd",
         "appendix/Appendix.Rmd",
+        "appendix/Requirements.Rmd",
         "appendix/OtherLanguages.Rmd"
         ]
 output_dir: book_output
