@@ -3,6 +3,7 @@ title: "Computer skills for graduate students"
 author: "Kevin R Thornton"
 date: "`r Sys.Date()`"
 documentclass: book
+classoption: openany
 site: "bookdown::bookdown_site"
 biblio-style: plainnat.bst
 output:
