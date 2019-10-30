@@ -51,7 +51,7 @@ You must be using Python version 3, preferably 3.6 or later.  Python 2.7 is the 
 and it is slated for end of life January 1, 2020, meaning that no more updates will happen. The major libraries
 for Python, some of which are discussed below, have already dropped support for 2.7.
 
-Note, installing Python 3 on Apple's OS X operating system is best done via `conada`.  See Chapter \ref{conda}.
+Note, installing Python 3 on Apple's OS X operating system is best done via `conda`.  See Chapter \ref{conda}.
 
 ## Python files
 
