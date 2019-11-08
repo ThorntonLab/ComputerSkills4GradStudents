@@ -21,3 +21,5 @@ use the following work flow:
   which is the only non-free software used.
 
 This book is generated on a Linux operating system, most likely Pop! OS version 19.10 or later.
+
+You can get the source code for this book [here](https://github.com/ThorntonLab/ComputerSkills4GradStudents/).
