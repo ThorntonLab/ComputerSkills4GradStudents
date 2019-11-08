@@ -1,1 +1,93 @@
 # "Lab notebooks" for computational research: Rstudio, Jupyter, JupyterLab {#notebooks}
+
+For lab and field scientists, a laboratory notebook is the fundamental unit of research reporting.
+If your lab is funded by the NIH, you are required to give you notebook to your PI when you leave.
+Your PI must keep that notebook for several years.  Current guidelines require that records be
+kept for two years after the grant has closed, but the notes may be needed by your lab for much longer.
+
+A standard lab notebook is relatively straightforward to keep, although it does require some diligence.
+What do you do for your computational work?  How do you go from folders of scripts and output files
+to something showing an arrangement of your thoughts and results into some sort of "story"?
+
+A partial answer to these questions is to use notebooks as a form of electronic lab notebook.
+Essentially, a notebook is a means of mixing text, code, and graphics.  Isn't that a paper?
+Yes, although papers usually omit the code.  Notebooks are primarily designed for the generation
+of dynamic reports, meaning that each time the data changes, you can push some button or execute a 
+command, and the code to process the data and make the figures does its thing and the report is updated.
+
+In a highly idealized world, we would write our papers using notebooks.  By doing so, we would be
+stating that all figures, tables, and numbers in the text are based on the latest data files and
+processing code.  For many disciplines, generating manuscripts this way is not feasible.  Imagine
+that Figure 6 if your paper requires 300 CPU hours on your institution's cluster and a few
+terabytes of space to hold the intermediate results, which are then processed by a series of `R` and/or
+Python scripts.  It is clearly not possible to hit the `knit` button in `R Studio` from your laptop
+and get the latest results into your manuscript.
+
+If you are interested in notebooks and reproducible science, then I highly recommend following Karl
+Broman's [blog](https://kbroman.org) and to also follow him on Twitter.
+
+## R Studio (R markdown more generally)
+
+[R Studio](http://rstudio.com) is a graphical interface to `R`.  Within it, you may manage the installation of 
+`R` packages, and interact with the traditional `R` shell with the graphics popping up in a window on the right
+(Figure \ref{fig:rstudio_linux}).
+
+```{r, echo=F, fig.cap="\\label{fig:rstudio_linux}R Studio on the author's laptop running the Pop! OS 19.10 Linux distribution"}
+knitr::include_graphics("figs/rstudio_linux.png")
+```
+
+`R Studio` is also an editor for `R markdown`, or `Rmd` files. There is an excellent [tutorial](https://rmarkdown.rstudio.com/)
+online for generated `R markdown`.  Behind the scenes, a set of amazing tools called [knitr]() and [pandoc]() take your `markdown`
+code and turn it into a more standard output format.  You can even select Microsoft Word (Figure \ref{fig:newrmd}).
+
+```{r, fig.align='center', out.height="4in", out.width="4in", echo=F, fig.cap="\\label{fig:newrmd}The dialog box for a new R Markdown document"}
+knitr::include_graphics("figs/newrmd.png")
+```
+
+`R Studio` also has `git` integration as long as you work on a "Project" (`File -> New Project`).  You'll want to look at the
+`R Studio` documentation online for setting up the `git` integration.
+
+Within an `Rmd` file, you may write `R` and `Python` code, with the latter requiring [reticulate](https://cran.r-project.org/web/packages/reticulate/index.html).  This entire book is generated this way (Appendix \ref{techdetails}).  Feel free to read the `Rmd` files behind it
+to see how various things get done.
+
+My opinion is that `Rmd` files are the best solution right now for notebooks:
+
+* They are plain text, and thus `git`-friendly.
+* Support both `R` and Python in the *same* document is a big win.
+* The files may be generated in any editor (because they are plain text).
+
+## Jupyter and Jupyter Lab
+
+[Jupyter](https://jupyter.org/) notebooks are the most obvious notebook solution for Python (although see my comments above).
+`Jupyter` is much broader than just Python, however, and supports a range of languages.  For example, you may write a notebook
+in `R` using [IRKernel](https://irkernel.github.io/). 
+
+The notebooks are run through a web browser, which starts a local server.  In general, it is tedious to run a notebook remotely.
+For example, you want to work on a notebook on the UCI cluster from your laptop.  Starting it there via X11 forwarding will be a
+horrible experience.  For effective remote work, `ssh` tunneling is needed.  See [here](https://coderwall.com/p/ohk6cg/remote-access-to-ipython-notebooks-via-ssh) for the original link.  Briefly, on the remote server, start a notebook server on an open port:
+
+```{sh, eval=F}
+remote_user@remote_host$ ipython notebook --no-browser --port=8889
+```
+
+Then, from your laptop or wherever:
+
+```{sh, eval=F}
+local_user@local_host$ ssh -N -f -L localhost:8888:localhost:8889 remote_user@remote_host
+```
+
+Thanks to Andy Kern (U. Oregon) for this tip.
+
+[Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/) represents the next generation interface for this technology.
+
+I like `Jupyter` notebooks, even though I've said they are not the ideal solution.  They are easy to use,
+generate nice output, and I just enjoy the experience (aside from having to run them via a browser).  However,
+there is one big issue with them...
+
+### git
+
+These notebooks contain big chunks of binary data.  For us humans, it is unreadable gibberish.  For `git`, it makes
+tracking changes over time hard.  Your repository will quickly balloon in size, too. There are [tools](https://nbdime.readthedocs.io/en/latest/)
+to help see the changes, but the repository size remains an issue.  Other solutions, such as exporting from notebook
+to `markdown` and just committing the latter, are also not ideal.  These issues are why I personally prefer `Rmd` files,
+although I still happily work in `Jupyter`--it just isn't work that generally ends up on GitHub.
