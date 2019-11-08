@@ -13,7 +13,8 @@ rmd_files:
         "chapters/conda.Rmd",
         "appendix/Appendix.Rmd",
         "appendix/Requirements.Rmd",
-        "appendix/OtherLanguages.Rmd"
+        "appendix/OtherLanguages.Rmd",
+        "appendix/techdetails.Rmd"
         ]
 output_dir: book_output
 book_filename: compskills.Rmd
