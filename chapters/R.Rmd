@@ -61,18 +61,20 @@ tasty = data.frame(name=c, isanimal=b, tastiness=a)
 tasty
 ```
 
-The `data.frame` is our analog of an in-memory spreadsheet.  We can do group and summarise operations:
+The `data.frame` is our analog of an in-memory spreadsheet.  We can do group and summarise operations via
+the `aggregate` function.  The next code chunk gives us the mean tastiness for each value of `isanimal`:
 
 ```{r}
-
-(mean_by_isanimal <- lapply(with(tasty, split(tastiness, isanimal)), mean))
-unlist(mean_by_isanimal)
+mean_by_isanimal = aggregate(x=tasty[c('tastiness')],
+                            by=tasty[c("isanimal")],
+                            FUN=mean)
+mean_by_isanimal
 ```
 
-The above code gives is the average `tastiness` for the two different groupings of the categorical variable `isanimal`.
-However, the code is rather opaque.  While it is possible to do all of your "split/apply/combine" operations (see
-\ref{splitapplycombine}) using `base` R, I recommend skipping this corner of R and proceeding straight to the `tidyverse`
-(see \ref{tidyverse}).
+The built in `aggregate` works, but you may find yourself quickly pushing its limits.  I will admit my bias
+towards doing these sorts of operations with the `dplyr` library in the so-called `tidyverse`.  The main
+reason is for improved performance on large data sets.  The second reason is that you get a toolkit 
+for processing databases for free (see Chapter \ref{sqlite3}.
 
 ## tidyverse {#tidyverse}
 
