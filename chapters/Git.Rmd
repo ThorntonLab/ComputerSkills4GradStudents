@@ -503,7 +503,7 @@ of a license.  An open source license should be preferred for code resulting fro
 funded research.  The specific license that you choose needs to result from a conversation between
 yourself, your advisors, and your institution.  I cannot give specific advice here.
 
-The license for a repository should be in a file called `LICENCE` and/or `COPYING`.
+The license for a repository should be in a file called `LICENSE` and/or `COPYING`.
 
 If you are worried about people "stealing" ideas from your repo, you should be aware that there is 
 really no such thing, legally, if your code is out there in an unlicensed form, at least in the US.

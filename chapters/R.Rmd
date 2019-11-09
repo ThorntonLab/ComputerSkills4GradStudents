@@ -74,7 +74,7 @@ mean_by_isanimal
 The built in `aggregate` works, but you may find yourself quickly pushing its limits.  I will admit my bias
 towards doing these sorts of operations with the `dplyr` library in the so-called `tidyverse`.  The main
 reason is for improved performance on large data sets.  The second reason is that you get a toolkit 
-for processing databases for free (see Chapter \ref{sqlite3}.
+for processing databases for free (see Chapter \ref{sqlite3}).
 
 ## tidyverse {#tidyverse}
 
