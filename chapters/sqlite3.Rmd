@@ -1,1 +1,168 @@
 # Databases using sqlite3 {#sqlite3}
+
+```{r, echo=F}
+if (file.exists("tajimasd.sqlite3"))
+{
+    x = file.remove("tajimasd.sqlite3")
+}
+```
+
+Before we begin, I want to say that this chapter contains material whose utility
+you may not realize right now, but may want to revisit later.  The methods 
+discussed here solve a lot of problems, but you may not "be there" yet with your own
+research.  Also, do not give into the temptation to use the approaches described
+here instead of domain-specific approaches for your specific problems.  For example,
+if [bedtools](https://bedtools.readthedocs.io/en/latest/) can process your data using one
+command, then definitely do that!  Likewise, if `R` or Python libraries already do 
+exactly what you need, then use them.  This chapter is ultimately about what to
+do when you need to build a custom wheel.
+
+This chapter describes how to store and manipulate data stored in *databases* rather than in
+*data frames*.  These databases may be on disk or in memory, but most often the former.
+What we have been calling a data frame is referred to as a table in database jargon.
+Data bases are useful in many cases:
+
+* When your data set is too large to hold in memory.
+* When your data set consists of a very large number of tables and your analysis
+  needs to integrate all of them.
+* When you want to process your data using tools written in several different languages.
+  The database can act as a common file format.
+* When you have to reformat data into a tabular format for a custom analysis. (This is a common
+  need.  It may be worth considering having the final file be a database rather than
+  a "flat" text file.)
+
+Data bases are binary file formats optimized for fast retrieval.  We will talk about
+the [sqlite](https://www.sqlite.org) data base engine, or `sqlite3` after its current
+version.  `sqlite3` is notable because you may "administer" databases (*e.g.* create
+and delete them) without needing privileged access on your machine.  Thus, you can 
+create them on the cluster.  The trade-off is that `sqlite3` is not as powerful (fast)
+as some of its open-source competitors [MySQL](http://www.mysql.com) or 
+[PostgreSQL](https://www.postgresql.org/).
+
+Databases have their own language called the Structured Query Language, or SQL.
+The various database programs all use slightly different variants of SQL.  The main
+point of this chapter is that you can use the `tidyverse` library `dplyr` in place
+of learning SQL syntax and writing the queries manually.
+
+
+## Examples using R
+
+The `R` code in this chapter has some additional dependencies that you will want to install:
+
+* `DBI`
+* `RSQLite`
+* `dbplyr`
+
+I will use explicit namespace references in the example code shown here.  What function comes from
+which package will be a bit too murky otherwise.
+
+Let's take our data set from Chapter \ref{graphics} and output it as an `sqlite3` database:
+
+```{r}
+x = read.table(gzfile("data/tajimasd.txt.gz"), header=T)
+conn = DBI::dbConnect(RSQLite::SQLite(), "tajimasd.sqlite3")
+RSQLite::dbWriteTable(conn, "data", x)
+RSQLite::dbDisconnect(conn)
+```
+
+That was rather easy.  One hint is to use `sqlite3` as the suffix instead of `db`. By default, Google Drive
+doesn't like the latter extension.
+
+The next bit is the real magic.  We will use our database to do the same aggregation as in Chapter 
+\ref{graphics}.
+
+```{r}
+conn = dplyr::src_sqlite("tajimasd.sqlite3")
+dbtable = dplyr::tbl(conn, 'data')
+query = dbtable %>%
+       mutate(dist = abs(window-5)) %>%
+       group_by(generation, dist, mu, opt) %>%
+       summarise(meand = mean(tajd, na.rm=T)) %>%
+       mutate(scaled_time = generation - 10*5e3)
+
+data = dplyr::collect(query)
+
+data$dist <- factor(data$dist, levels=rev(sort(unique(data$dist))))
+data$opt <- factor(data$opt, levels=c(1, 0.5, 0.1))
+```
+
+The `query` variable looks a lot like what we did in the graphics chapter.  The only difference
+is that we don't deal with the `factor` business there.  That line is the main thing to take
+away from this chapter:
+
+**You can write SQL queries using dplyr, and it will generate the correct SQL syntax for
+you when you `collect` the query results.  The query is executed on the database side,
+and therefore not in memory!!!**
+
+That last sentence is really important: when your analysis is too big to do in RAM, then
+you may be able to do it in a database using the *exact same* toolkit.
+
+There is a caveat, of course.  The SQL that `dplyr` writes requires that there is a 
+direct mapping of a `dplyr` verb into SQL syntax.  If no such mapping is possible, 
+you'll get strange errors. One such example is `factor`, which is an `R` concept that
+has no analog in SQL.  Thus, we assign the `factor` levels after getting the
+results back from the query.
+
+```{r, echo=F}
+# Cleanup at end of R examples
+if (file.exists("tajimasd.sqlite3"))
+{
+    x = file.remove("tajimasd.sqlite3")
+}
+```
+
+## Examples using Python
+
+In Python, dumping a data frame to a database is straightforward using `pandas`:
+
+```{python}
+import pandas as pd
+import numpy as np
+import sqlite3
+
+x = pd.read_csv('data/tajimasd.txt.gz', sep='\t', compression='gzip')
+conn = sqlite3.connect("tajimasd.sqlite3")
+x.to_sql('data', conn)
+conn.close()
+```
+
+To retrieve and analyze data using `pandas`, we need to use plain SQL queries:
+
+```{python}
+conn = sqlite3.connect("tajimasd.sqlite3")
+query = 'select avg(tajd) as meand, ' + \
+        'abs(window - 5) as dist, ' + \
+        'generation - 50000 as scaled_time ' + \
+        'from data ' + \
+        'group by generation, dist, mu, opt'
+agg = pd.read_sql(query, conn)
+conn.close()
+```
+
+## Recommendations
+
+In general, I recommend `dplyr` for the *processing* of databases and either `R` or Python for making them.
+For Python, [SQL Alchemy](https://www.sqlalchemy.org/) provides higher-level abstractions for database
+interaction, meaning that you don't need to write the raw SQL. However, I personally find it very complex
+and greatly prefer `dplyr` because I don't have to learn anything new! (Other than how to connect to 
+the database and the table, which are trivial operations.)
+
+## Joining tables
+
+This chapter doesn't cover the "power" feature of databases, which the *join*. In words, a join may take
+the form of "take all rows from table `A` where the values in column `C` equal the values in column `C` from table `B`".
+
+You may perform joins on  in-memory data frames in both R, via `dplyr`, and in Python, using `pandas`.  From an
+`sqlite3` database, you can write the same kind of joins using `dplyr` and they will be executed out of memory.
+
+Joins are a big topic.  There are many flavors of join.  It is well worth learning the `dplyr` syntax for in- and out-of- 
+memory use.  The `pandas` syntax is powerful, too.
+
+```{r, echo=F}
+# End of chapter cleanup code
+if (file.exists("tajimasd.sqlite3"))
+{
+    x = file.remove("tajimasd.sqlite3")
+}
+```
+
