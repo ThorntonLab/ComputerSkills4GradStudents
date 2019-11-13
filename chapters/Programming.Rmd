@@ -379,6 +379,7 @@ Other options that people like include, but are not limited to:
 
 * [atom](https://atom.io/)
 * [Microsoft VS code](https://code.visualstudio.com/)
+* [nano](https://www.nano-editor.org/)
 
 ### Ergonomics
 
