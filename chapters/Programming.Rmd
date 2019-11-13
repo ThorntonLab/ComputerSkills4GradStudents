@@ -110,6 +110,7 @@ We now turn to the anatomical elements of programming languages.  While these co
 to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
 Python is a bit funky at first.
 
+
 #### Types {#types}
 
 ##### Scalars
@@ -134,6 +135,18 @@ where R gets it from.  Pretty much every other language on the planet uses `=` f
 own R code, which will make me the subject of abuse on Twitter if word got out!  There are [cases](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
 where it matters which assignment method you use, but I've decided not to worry about it.  Twitter flame wars aside,
 this seems like a small point, but it is an example of how there are many nearly equivalent ways of doing the same thing in any language.
+
+#### Keywords
+
+A *keyword* is a fundamental part of a language's syntax.  A keyword may not be used as a variable name because it would
+confuse parsing the code
+
+For example, the following block of `R` code are invalid because I am attempting to use a keyword as a variable name:
+
+```{r, eval=F}
+if = 4
+for = 13245
+```
 
 ##### "Null" and other special values.
 
