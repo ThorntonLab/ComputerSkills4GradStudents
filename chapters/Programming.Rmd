@@ -117,9 +117,18 @@ Python is a bit funky at first.
 
 ##### Arrays
 
+##### Associative Containers
+
 ##### Strings
 
-##### Associative containers
+##### Regular expressions, or "regexes"
+
+A large chunk of computing tasks involve text processing.  Sometimes we are interested in matching an exact phrase.
+Often, though, we want to do something like find all occurrences of a *pattern* in a string.  For example, find
+all words in a document beginning with a capital letter.  These more abstract patterns are found using *regular
+expressions*, or *regexes* for short.  Both `R` and Python support searching strings with regexes.  In `R`, 
+look to the `stringr` library.  For Python, the relevant module is `re`, which is part of the standard library.
+Regexes get complicated fast!  You'll need to practice a lot at first.
 
 #### Variables
 
