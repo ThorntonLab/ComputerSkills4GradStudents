@@ -111,15 +111,32 @@ to use in order to show concrete examples.  I'll use R here, mostly because it h
 Python is a bit funky at first.
 
 
-#### Types {#types}
+#### Types {#types} 
+
+A *type* refers to a specific sort of data.  For example, integers and numbers with decimal places are different types
+in post languages. Characters are often another type, etc..  This section outlines some of the more common types.
 
 ##### Scalars
 
+Take a single integer value, say `5`.  This is a single integer value.  Such single values are referred to as scalar values.
+
 ##### Arrays
+
+Arrays, in contrast to scalars, hold multiple values.  For example, we may have an array containing the five scalar
+values `[1, 2, 3, 4, 11]`.
+
+Arrays may have higher dimensions, and may be referred to as matrices.
 
 ##### Associative Containers
 
+An *associative container* allows a mapping of *keys* onto *values*.  A dictionary is an associative container.  The 
+words are the keys and the values are their definitions.  There are many forms of associative containers.  They
+keys may or may not be required to be unique. The keys may be stored in some sorted manner or using a method that
+may seems like a black box.  The requirements for the value may vary, too.
+
 ##### Strings
+
+A string is an array of characters.  Most of this book is strings.
 
 ##### Regular expressions, or "regexes"
 
@@ -209,6 +226,8 @@ z <- x * y
 # division
 z <- x/y
 ```
+
+The `+`, `-`, etc., symbols are called *operators*.
 
 
 
