@@ -110,15 +110,42 @@ We now turn to the anatomical elements of programming languages.  While these co
 to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
 Python is a bit funky at first.
 
-#### Types {#types}
+
+#### Types {#types} 
+
+A *type* refers to a specific sort of data.  For example, integers and numbers with decimal places are different types
+in post languages. Characters are often another type, etc..  This section outlines some of the more common types.
 
 ##### Scalars
 
+Take a single integer value, say `5`.  This is a single integer value.  Such single values are referred to as scalar values.
+
 ##### Arrays
+
+Arrays, in contrast to scalars, hold multiple values.  For example, we may have an array containing the five scalar
+values `[1, 2, 3, 4, 11]`.
+
+Arrays may have higher dimensions, and may be referred to as matrices.
+
+##### Associative Containers
+
+An *associative container* allows a mapping of *keys* onto *values*.  A dictionary is an associative container.  The 
+words are the keys and the values are their definitions.  There are many forms of associative containers.  They
+keys may or may not be required to be unique. The keys may be stored in some sorted manner or using a method that
+may seems like a black box.  The requirements for the value may vary, too.
 
 ##### Strings
 
-##### Associative containers
+A string is an array of characters.  Most of this book is strings.
+
+##### Regular expressions, or "regexes"
+
+A large chunk of computing tasks involve text processing.  Sometimes we are interested in matching an exact phrase.
+Often, though, we want to do something like find all occurrences of a *pattern* in a string.  For example, find
+all words in a document beginning with a capital letter.  These more abstract patterns are found using *regular
+expressions*, or *regexes* for short.  Both `R` and Python support searching strings with regexes.  In `R`, 
+look to the `stringr` library.  For Python, the relevant module is `re`, which is part of the standard library.
+Regexes get complicated fast!  You'll need to practice a lot at first.
 
 #### Variables
 
@@ -134,6 +161,18 @@ where R gets it from.  Pretty much every other language on the planet uses `=` f
 own R code, which will make me the subject of abuse on Twitter if word got out!  There are [cases](https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html)
 where it matters which assignment method you use, but I've decided not to worry about it.  Twitter flame wars aside,
 this seems like a small point, but it is an example of how there are many nearly equivalent ways of doing the same thing in any language.
+
+#### Keywords
+
+A *keyword* is a fundamental part of a language's syntax.  A keyword may not be used as a variable name because it would
+confuse parsing the code
+
+For example, the following block of `R` code are invalid because I am attempting to use a keyword as a variable name:
+
+```{r, eval=F}
+if = 4
+for = 13245
+```
 
 ##### "Null" and other special values.
 
@@ -187,6 +226,8 @@ z <- x * y
 # division
 z <- x/y
 ```
+
+The `+`, `-`, etc., symbols are called *operators*.
 
 
 
