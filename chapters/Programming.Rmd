@@ -118,7 +118,7 @@ in post languages. Characters are often another type, etc..  This section outlin
 
 ##### Scalars
 
-Take a single integer value, say `5`.  This is a single integer value.  Such single values are referred to as scalar values.
+Take a single integer value, say `5`. Such single values are referred to as scalar values.
 
 ##### Arrays
 
