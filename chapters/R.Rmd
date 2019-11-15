@@ -115,7 +115,7 @@ In my opinion, the `dplyr` version has two major advantages:
 Further, `dpylr` is quite *efficient*, as most of its core operations are implements in C++
 using `Rcpp` (see \ref{rcpp}).
 
-A common criticism of the pip-based syntax is that it is harder to find where errors occur.  I find this to
+A common criticism of the pipe-based syntax is that it is harder to find where errors occur.  I find this to
 be a non-issue.  When you do run into problems, just "unpipe" things to debug:
 
 ```{r}
