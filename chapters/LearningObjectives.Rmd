@@ -5,9 +5,9 @@
 The majority of this course is a "learn by doing" or "hackathon" experience. During the "lecture", I'll introduce a topic
 or set of topics.  In the "lab", you will work on problems related to these topics.  Given that we cannot possibly 
 teach you everything via the lectures, a lot of the learning comes from having to solve problems in real time in lab.
-Thus, you'll get what you put in.
+Thus, you'll get out what you put in.
 
-To make progress, you'll need a computer capable of doing the labs (see Chapter \ref{requirements}).  We also expect that
+To make progress, you'll need a computer capable of doing the labs (see Appendix \ref{requirements}).  We also expect that
 you are proficient in the material covered in the prerequisite course taught by J.J. Emerson.  Although we do let students
 in who have not taken the prerequisite, we reserve the right to monitor your progress.  If someone is taking up more than
 their fair share of the instructor's/TA's time due to a lack of background, then that person may be asked to leave the course.

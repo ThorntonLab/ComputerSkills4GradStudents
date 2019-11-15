@@ -10,7 +10,7 @@ Programming is writing down a bunch of instructions into a file so that a comput
 Our computers exist to execute the logic that we write down.  If we do a good job, our lives are easier.  If we make a mistake, then we get
 the wrong answer. (Telling right from wrong answers coming out of programs is a key skill for you to develop during your PhD.)
 If we make a really bad mistake, then we may cause harmful side effects like accidentally deleting data or crashing the machine.
-Don't be afraid of mistakes--they are an important part of the process.
+That said, don't be afraid of mistakes--they are an important part of the learning and research process.
 
 ### How to learn programming.
 
@@ -76,7 +76,7 @@ Python and R, the languages emphasizes here, are interpreted languages, which is
 at which your code runs *may* be slow relative to the same code written in a compiled language.  However, it is often
 faster to write code in interpreted languages.  Such languages often have a richer, more readable syntax than compiled languages,
 and they often have more features built-in to their standard libraries (see \ref{stdlib} below).  You also don't have to wait
-for your program to compile every time you change something.  Compile times can be substantial for some languages like C++.
+for your program to compile every time you change something.  Compile times can be substantial for languages like C++.
 
 For most of your work, I will wager that the performance of interpreted languages is more than sufficient most of the time.  In fact,
 the internal guts of most interpreted languages are written in high-performance compiled languages like C when performance
@@ -100,13 +100,13 @@ no such support, and one needs to depend on third-party packages adding those fe
 [GNU Scientific Library](https://www.gnu.org/software/gsl/).
 
 The standard features of a standard library differ from language to language.  There are no rules.  R has built-in support
-for graphics, which makes a lot of sense.  R is, after all, primarily a language for statistics.  In Python, you need
+for graphics, which makes a lot of sense.  R is, after all, primarily a language for statistics.  In Python, you need to install
 [matplotlib](http://www.matplotlib.org) to start making plots.  To get the same linear algebra capabilities in Python that you have
-in R, you need [numpy](http://www.numpy.org).
+in R, you need to install [numpy](http://www.numpy.org).
 
 ### The components of programming languages {#components}
 
-We now turn to the anatomical elements of programming languages.  While these concepts are pretty universal, we have to pick a language
+We now turn to the anatomical elements of programming languages.  While these concepts are close to universal, we have to pick a language
 to use in order to show concrete examples.  I'll use R here, mostly because it has a traditional syntax for writing the code whereas
 Python is a bit funky at first.
 
@@ -147,6 +147,12 @@ expressions*, or *regexes* for short.  Both `R` and Python support searching str
 look to the `stringr` library.  For Python, the relevant module is `re`, which is part of the standard library.
 Regexes get complicated fast!  You'll need to practice a lot at first.
 
+##### Objects
+
+It is common for programming languages to support more complex types, variably referred to as `structs` (structures), `classes`, or some other
+term meaning a more complex data type than a simple number or character.  We will introduce these in later chapters as needed, as
+the details are language-specific.
+
 #### Variables
 
 Programming languages use variables to store type information and associate it with a name:
@@ -174,7 +180,7 @@ if = 4
 for = 13245
 ```
 
-##### "Null" and other special values.
+#### "Null" and other special values.
 
 We need a way to express the concept of a variable being undefined.  These "null" values can represent that a variable is undefined, or
 has a value that resulted from a domain error in a mathematical calculation.  For example, in R, the NULL value is `NA`:
@@ -198,18 +204,6 @@ is.na(b)
 is.infinite(b)
 is.infinite(c)
 ```
-
-##### Objects
-
-The variable `x` above refers to a simple integer.  In R, it has a `numeric` type:
-
-```{r}
-print(class(x))
-```
-
-It is common for programming languages to support more complex types, variably referred to as `structs` (structures), `classes`, or some other
-term meaning a more complex data type than a simple number or character.  We will introduce these in later chapters as needed, as
-the details are language-specific.
 
 #### Mathematical operations
 
@@ -328,7 +322,7 @@ foo <- function(x)
 
 In R and Python, comments begin with a hash sign (\#).
 
-In many languages, include Python and R, it is possible to generate documentation for code directly from the comments.  
+In many languages, include Python and R, it is possible to generate documentation for code directly from the comments.
 
 #### Error handling
 
@@ -361,7 +355,8 @@ See @Wickham2011-lt for discussion.
 it is crude.  Basically, make sure you read the documentation for the functions you are using.
 What does a function do?  What guarantees does it make?  What side effects are there?
 
-An example of where this matters is described [here](https://i-programmer.info/news/231-methodology/13188-python-script-invalidates-hundreds-of-papers.html).  A function in the Python standard library resulted in different answers on different operation systems, causing
+An example of where this matters is described [here](https://i-programmer.info/news/231-methodology/13188-python-script-invalidates-hundreds-of-papers.html).
+A function in the Python standard library resulted in different answers on different operation systems, causing
 a large number of scientific papers to report incorrect results.  The reason is a failure to RTFM.  The method used
 to find the files on the computer is documented as returning them in "an arbitrary order", which should have been an immediate
 red flag.  Thanks to Edwin Solares for pointing this out to me.
@@ -421,6 +416,13 @@ Other options that people like include, but are not limited to:
 * [atom](https://atom.io/)
 * [Microsoft VS code](https://code.visualstudio.com/)
 * [nano](https://www.nano-editor.org/)
+
+A good editor should have the following features:
+
+* Syntax highlighting, which means that keywords, variables, etc., have separate colors.  This feature greatly improves 
+  readability.
+* The ability to execute shell commands from within the editor is very handy
+* `git` integration is *very* nice to have
 
 ### Ergonomics
 

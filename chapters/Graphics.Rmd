@@ -55,7 +55,7 @@ that there is no perfect color scheme in the sense that you cannot guarantee tha
 every color.  Rather, the point is to be conscious of this issue and not alternate red and green throughout your paper 
 (see @Eisen1998-xj for an example of an influential paper where red-vs-green is the key plotting technique).
 
-When plotting continuous data, such as the output of hierarchical clustering, the `viridis` palette is a good choice.
+When plotting continuous data using any method like a "heat map", the `viridis` palette is a good choice.
 It ticks a lot of boxes--perceptually uniform across its range and is at least okay for most of the common
 forms of color blindness, which puts it in a leading position in that regard.  The palette is the default
 for continuous plots in `matplotlib` as of version 2.0, and it is available as an R package.
@@ -194,7 +194,7 @@ Figure \ref{fig:coplot} shows the output of the following code, generated using 
 `coplot` function.  The plot is fine for an exploratory analysis, but it is rather 
 far from publication-ready.  The way that the conditioning variables are displayed
 takes up far too much space.  We also don't have a legend showing what our lines mean.
-Further, the use of the `panel` function to draw the lines themselves is a bit tedious
+The use of the `panel` function to draw the lines themselves is a bit tedious
 and we'd prefer that sort of grouping to be more automatic.
 
 ```{r coplot, fig.cap="The output from base R's coplot"}
@@ -229,7 +229,8 @@ showing how to use them, we will redo our analysis using the `tidyverse` package
 The following code results in a data frame with contents very similar to our
 `agg` object above.  One nice feature of `dplyr` is that it is easy to name
 the outputs of our analysis.  For example, we name the output of our summary function 
-`meand`.  Above, the output of `mean(tajd)` was still named `tajd` in `agg`.
+`meand`.  Above, the output of `mean(tajd)` was still named `tajd` in `agg` when using
+the `aggregate` function.
 
 We also take the time here to make sure that we have properly ordered `factor` columns in 
 our output.  These columns are used to generate the plotting order of the conditioning
@@ -511,9 +512,9 @@ x = legend_axis.axis('off')
 ```
 
 Having set things up, we can now generate the plot itself, which proceeds via
-simple grouping operations using `pandas`.  In the code, note that the string
-literals contain \LaTeX\ code to generate the symbols.  The front-to-back
-placement of lines is controlled by the `zorder` parameter.
+simple grouping operations using `pandas`.  In the code, the string
+literals contain \LaTeX\ code to generate the symbols, which is one of my 
+favorite `matplotlib` features.  The front-to-back placement of lines is controlled by the `zorder` parameter.
 
 The code follows and the output is shown in Figure \ref{fig:matplotlib}.
 
@@ -590,9 +591,9 @@ data.dist.unique()
 len(COLORS) - data.dist.unique() - 1
 ```
 
-The results from `seaborn` are impressive.  The plot is probably publication-quality, or at least very close.
-The fonts are probably a bit small. The legend placement may not be ideal, but it is hard-coded
-in to a `center right` position for this type of plot.  I have read the `seaborn` code and see
+The results from `seaborn` are impressive.  The plot is probably publication-quality, or at least very close,
+and the amount of code needed is small. The fonts are probably a bit small. The legend placement may not be ideal,
+but it is hard-coded in to a `center right` position for this type of plot.  I have read the `seaborn` code and see
 why they made this decision, but it is possible that a future release will allow legend placement
 "anywhere" like a standard `matplotlib` plot.  The issue is that the layout of these multi-panel plots is a
 bit fiddly, which you got a hint of in the previous section.
@@ -685,7 +686,7 @@ is in place because of a security flaw in `ghostscript`.  See [here](https://sta
 All of the above applies, but you can get away with smaller files like `png`.
 
 Expect to have to modify your figures for talks.  You are all but guaranteeing a bad talk if you take figures directly
-from your paper and drag it into Powerpoint.  Papers from publications are often far too detailed, and the fonts too small,
+from your paper and drag them into Powerpoint.  Papers from publications are often far too detailed, and the fonts too small,
 to be visible from the back of the room. Every talk is a job interview, so don't be lazy here.
 For the figures shown in this chapter, I would reduce them to a single row or 
 perhaps even to a single panel.  The idea that you may need to change your figures **yet again** reinforces the importance
