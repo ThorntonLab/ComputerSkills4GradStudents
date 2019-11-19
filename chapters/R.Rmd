@@ -20,7 +20,7 @@ easy to discover the one that you need.
 Unlike Python, the guidelines for creating R packages for distribution are highly detailed and strictly
 adhered to, creating a high average quality of packages installed via [CRAN](http://cran.r-project.org).
 Unfortunately, violations of these strict rules can be reported in ways that are often viewed
-as unwelcoming and non-inclusive. Certain person on the R mailing lists are infamous.
+as unwelcoming and non-inclusive. Certain persons on the R mailing lists are infamous.
 
 Regarding the language itself, most of the weaknesses are found in `base`.  The development of the core
 language is highly conservative, meaning that some corners of the language that are klunky have been so
@@ -38,7 +38,7 @@ In fact, searching Amazon will show you that a rich library exists that covers a
 statistical methods and how to do them in R.
 
 R has built-in support for matrix and vector types as well as linear algebraic operations.  These operations,
-and many of the low-level linear regression functions, are implemented in C and very well-tested.
+and many of the low-level linear regression functions, are implemented in C and are very well-tested.
 
 The standard library, or `base` R (\ref{base}) has good support for plotting, which we discuss more in 
 Chapter \ref{graphics}.
@@ -107,12 +107,9 @@ mean_tastiness = tasty %>%
 mean_tastiness
 ```
 
-In my opinion, the `dplyr` version has two major advantages:
-
-1. The code is more readable
-2. The final output is `data.frame`-like.
-
-Further, `dpylr` is quite *efficient*, as most of its core operations are implements in C++
+In my opinion, the `dplyr` version is much more readable.  I find the "piping" of commands (often called *verbs*)
+rather elegant.  There is a lot you can do with `dplyr` for various "data wrangling" tasks, and @Wickham2017-kh
+covers many of them. Further, `dpylr` is quite *efficient*, as most of its core operations are implements in C++
 using `Rcpp` (see \ref{rcpp}).
 
 A common criticism of the pipe-based syntax is that it is harder to find where errors occur.  I find this to
@@ -124,7 +121,7 @@ s = summarise(g, mt = mean(tastiness))
 s
 ```
 
-It is less work to semi-unpipe things:
+It is less work to semi-unpipe things when debugging:
 
 ```{r}
 g = tasty %>% group_by(isanimal)
