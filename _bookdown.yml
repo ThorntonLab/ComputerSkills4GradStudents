@@ -3,6 +3,7 @@ rmd_files:
         "chapters/Preface.Rmd",
         "chapters/Intro.Rmd",
         "chapters/LearningObjectives.Rmd",
+        "chapters/OpenSource.Rmd",
         "chapters/Programming.Rmd",
         "chapters/Python.Rmd",
         "chapters/R.Rmd",
