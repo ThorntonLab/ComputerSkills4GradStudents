@@ -199,7 +199,6 @@ and we'd prefer that sort of grouping to be more automatic.
 
 ```{r coplot, fig.cap="The output from base R's coplot"}
 coplot(tajd ~ scaled_time | as.factor(mu)*as.factor(opt), data=agg,
-       pch = 14 + as.integer(unique(agg$dist)),
        xlim=XLIM,
        subscripts = TRUE,
        panel=function(x, y, subscripts, ...)
