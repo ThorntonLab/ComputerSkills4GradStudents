@@ -57,7 +57,7 @@ Often, out-of-date and wrong go together, as the answer refers to an old version
 It can be quite hard for newcomers to tell good from bad answers. It is also important to not get distracted by discussion threads
 that go down a rabbit hole of pedantry.  A semi-reliable indicator of a good answer is a question that generated
 a lot of conversation resulting in an "accepted" answer with hundreds of votes.  Definitely use these sites, but keep your critical
-hat on while looking at the answer.  Don't just copy/paste and pray that your problems have been solves. Rather, try to understand
+hat on while looking at the answer.  Don't just copy/paste and pray that your problems have been solved. Rather, try to understand
 why the solution works.  And, if you do get a solution there, make a note of it in your code so that future you knows where it came from!
 
 My personal opinion is that good books are invaluable resources. They are often written by language experts and thus focus on the idiomatic
