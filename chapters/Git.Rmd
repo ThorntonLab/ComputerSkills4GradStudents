@@ -308,6 +308,41 @@ git branch -d branchname
 Occasionally, `git` may complain about deleting a branch with changes that haven't been merged.
 If so, and you know you really do want to delete, use `-D` in place of `-d` in the above commands.
 
+### Creating branches
+
+When working locally, creating a branch is a two-step process:
+
+```{sh, eval=F}
+# Create the branch:
+git branch branchname
+# Check the  branch out:
+git checkout branchname
+```
+
+When you create a branch, the new branches history starts off from whatever branch you were just on.
+For simplicity, we'll assume that that branch was `master`.  Thus, and new edits and commits are *on 
+top* of `master`'s history.
+
+Figure \@ref(fig:gitbranches) shows a one-liner, `git checkout -b branchname`.  This shorter command says,
+"if `branchname` does not exist *locally*, create it and check it out". (If it already exists, the command
+fails and tells you so.) It is easy to get into the habit of always using `checkout -b`, which will eventually
+cause you to create a local branch with the same name as a remote branch.  At this point, your local copy is 
+probably the same history as your remote, and you cannot push it to the remote location.
+
+As long as you haven't made any changes to this local branch, you can execute the following command
+to make your local branch the same as the remote:
+
+```{sh, eval=F}
+git reset --hard origin/branchname
+```
+
+**Be very careful with branch resets!!!**  This command forcibly overwrites the local history with
+that of the remote.
+
+If you have accidentally created the same branch name in two different places and have work in each
+that you want to keep, your life is harder.  You may try to merge your local and remote branches
+via `git pull origin branchname`. However, that may not work out, which brings us to the next section.
+
 ### merge conflicts
 
 I have painted a picture of branches consisting entirely of rainbows and unicorns.  There is,
@@ -425,6 +460,38 @@ but you are already paying monthly for your phone's data plan to use the UCI sol
 Once you set up two-factor, `GitHub` requires you to do `ssh` key exchange for each local machine that you want to use to push
 commits from.  This is a bit tedious, but is a one time setup.  I recommend against password-free keys.
 
+### Issue tracking {#githubissues}
+
+One of the best `GitHub` features is issue tracking. By default, active repositories have an `Issues` button
+allowing you to submit a new issue.  Issues are often bug reports and/or feature requests or questions about someone
+else's project.  They are also a great way for you to generate reminders for yourself when a project is in progress.
+For example, you could submit an issue with the text, "Need to confirm the calculation of X".
+
+When an issue is submitted, it gets a number.  Let's assume that our hypothetical issue is assigned number `1`.
+When you commit a change, you may refer to an issue:
+
+```{sh, eval=F}
+git commit analysis.R -m "Added code to verify calculation of X.  Closes #1."
+```
+
+The `Closes #1` bit is some magic.  First, when this commit is pushed back to `GitHub`, the issue's page will show a link
+to the commit.  Second, if the commit is merged into the `master` branch, then issue number one will automatically *close*,
+meaning that it is resolved.  There are other words you can use to do the same thing, and it is also possible to refer
+to issues in *other* repositories.  You can discover these features online.
+
+### Pull requests {#githubprs}
+
+A *pull request*, or `PR`, is a special way to treat a branch on `GitHub`.  A `PR` represents a request
+to merge changes from a branch into `master`.  The `PR` may be accepted and merged or rejected and closed.
+Like issues, they are assigned a number and you may refer to that number in commit messages.  `PR`s
+are an important tool for collaboration, and I suggest you
+[read about them](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+
+There is a lot of nuance to effectively using this `GitHub` feature.  One thing to be aware of is 
+that you may want to couple them with issues.  For example, you may have a branch called `fix_issue_7`.
+You commit a lot of changes to fix this issue.  If you merge it via a `PR`, you may want to edit the 
+commit message to be `Closes #7`, and then the issue will auto-close.
+
 ## Common misconceptions about GitHub
 
 I hear several concerns from academics about using `GitHub`.  I believe most of these to be non-issues,
@@ -484,6 +551,17 @@ repository (see \ref{gitbestpractices}).
 
 Treat your `master` branch as a special place.  Ideally, it represents code that is known 
 to work.  Use branches for making changes.
+
+### Use issue tracking
+
+I consider liberal use of issue tracking (\@ref(githubissues)) as a best practice for tracking the
+progress of a project.  It is very nice to be able to have the issue on a website, possibly 
+with a bunch of comments about it, and then to *know exactly* the commit or set of commits
+that address the issue.  Yes, you could use note-taking programs to manage `TODO` lists
+for your projects, but they won't have this deeper relationship with your code.
+
+My lab writes most of its papers using \LaTeX, and we use `GitHub` during the process.  We use
+issue tracking here, too, to discuss the evolving manuscript, etc..
 
 ### Document your repo
 
