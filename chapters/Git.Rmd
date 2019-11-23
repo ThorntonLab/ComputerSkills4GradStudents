@@ -308,6 +308,41 @@ git branch -d branchname
 Occasionally, `git` may complain about deleting a branch with changes that haven't been merged.
 If so, and you know you really do want to delete, use `-D` in place of `-d` in the above commands.
 
+### Creating branches
+
+When working locally, creating a branch is a two-step process:
+
+```{sh, eval=F}
+# Create the branch:
+git branch branchname
+# Check the  branch out:
+git checkout branchname
+```
+
+When you create a branch, the new branches history starts off from whatever branch you were just on.
+For simplicity, we'll assume that that branch was `master`.  Thus, and new edits and commits are *on 
+top* of `master`'s history.
+
+Figure \@ref(fig:gitbranches) shows a one-liner, `git checkout -b branchname`.  This shorter command says,
+"if `branchname` does not exist *locally*, create it and check it out". (If it already exists, the command
+fails and tells you so.) It is easy to get into the habit of always using `checkout -b`, which will eventually
+cause you to create a local branch with the same name as a remote branch.  At this point, your local copy is 
+probably the same history as your remote, and you cannot push it to the remote location.
+
+As long as you haven't made any changes to this local branch, you can execute the following command
+to make your local branch the same as the remote:
+
+```{sh, eval=F}
+git reset --hard origin/branchname
+```
+
+**Be very careful with branch resets!!!**  This command forcibly overwrites the local history with
+that of the remote.
+
+If you have accidentally created the same branch name in two different places and have work in each
+that you want to keep, your life is harder.  You may try to merge your local and remote branches
+via `git pull origin branchname`. However, that may not work out, which brings us to the next section.
+
 ### merge conflicts
 
 I have painted a picture of branches consisting entirely of rainbows and unicorns.  There is,
