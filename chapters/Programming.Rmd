@@ -431,7 +431,36 @@ but don't forget that it is really bad for you in the long run!  The monitor is 
 twisting your wrists at a funny angle.  The taller you are, and the broader your shoulders, the worse all of this is.
 All of these issues will catch up to you, eventually. 
 
-This paragraph is one of the few product endorsements in this book.  The [Ergodox EZ](http://www.ergodox-ez.com) keyboard is absolutely
-worth the money.  It will, however, slow you down for a while until you get used to the layout.  For portable computing, the 
-[Planck EZ](https://ergodox-ez.com/pages/planck) from the same company is great to type with, although you would not expect it based
-on its small size.  I've been dealing with carpal tunnel and related issues since about 2001, and these keyboards make a huge difference.
+#### Keyboard
+
+The keyboard is your primary input mechanism for writing and coding.
+As such, it is a primary ergonomics consideration.  A good keyboard should:
+
+* Prevent twisting at the wrists
+* Have all meta buttons (`Alt`, `Cntrl`, etc.) available on both sides
+* Have good key "travel" meaning that your fingers don't bottom out while typing
+
+Laptop keyboards usually don't meet all of these criteria.  For example, Apple keyboards only have `Cntrl` buttons on the left.
+All commercially-available keyboards also have a staggered key layout, meaning that the keys "fan out" to the left or right from the center.
+There is no real reason for this design.  I am a fan of the alternative "ortholinear" design where the keys are in straight columns. However,
+all ortholinear keyboards are boutique products, and most are sold as DIY kits requiring assembly and programming,
+which leads me to one of the few product recommendations in this book.  For my desktop computer, I use the [Ergodox EZ](http://www.ergodox-ez.com)
+keyboard and I use a [Planck EZ](https://ergodox-ez.com/pages/planck) whenever possible with my laptop.  These ortholinear keyboards are shown in Figure 
+\@ref(fig:keyboards).  I recognize that the price is steep, but I highly recommend these keyboards, especially the `Ergodox`.  Both take some
+getting used to, but they have made a huge difference in managing my issues with carpal tunnel syndrome.  Both keyboards are completely
+programmable, and you can control the mouse cursor with them, too.
+
+```{r keyboards, echo=F, out.height="2in", fig.align="center", fig.show="hold", fig.cap="The Erdogox EZ (left) and the Planck EZ (right)"}
+knitr::include_graphics(c("figs/ergodox.png","figs/planck.png"))
+```
+
+For desktop computers, I like the offerings from [Das Keyboard](https://www.daskeyboard.com/) for traditional keyboard layouts.  The `Das`
+is a nice mechanical keyboard which feels good and is not too loud.
+
+If you do get a mechanical keyboard like the `Das`, `Ergodox` or `Planck`, please be considerate of your lab mates!  Try to avoid loud key
+switches.  For the record, I use Cherry Brown in my `Ergodox` and Kailh Gold in my `Planck`.  Both feel great and are pretty quiet, but
+not totally silent.
+
+No matter what keyboard you use, there is one ergonomic improvement that everyone can make, which is to remap the `Caps Lock` key to something
+useful.  That key is completely useless for pretty much anyone.  If you use the `vim/neovim` editors, then remap it to `Esc` if you haven't
+done so already.  Your wrists will thank you.
