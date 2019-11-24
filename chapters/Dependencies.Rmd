@@ -100,3 +100,7 @@ to install `conda` for yourself as a `module`, which we discuss in the lab porti
 ## brew {#brew}
 
 **TBD**
+
+## Containers (Docker, etc.)
+
+**TBD**
