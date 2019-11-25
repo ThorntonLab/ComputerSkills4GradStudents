@@ -423,15 +423,3 @@ A good editor should have the following features:
   readability.
 * The ability to execute shell commands from within the editor is very handy
 * `git` integration is *very* nice to have
-
-### Ergonomics
-
-Make sure you have a proper chair.  Get your monitor set up to the right height.  You probably really like the freedom of a laptop,
-but don't forget that it is really bad for you in the long run!  The monitor is making you crane your neck, and the keyboard has you
-twisting your wrists at a funny angle.  The taller you are, and the broader your shoulders, the worse all of this is.
-All of these issues will catch up to you, eventually. 
-
-This paragraph is one of the few product endorsements in this book.  The [Ergodox EZ](http://www.ergodox-ez.com) keyboard is absolutely
-worth the money.  It will, however, slow you down for a while until you get used to the layout.  For portable computing, the 
-[Planck EZ](https://ergodox-ez.com/pages/planck) from the same company is great to type with, although you would not expect it based
-on its small size.  I've been dealing with carpal tunnel and related issues since about 2001, and these keyboards make a huge difference.
