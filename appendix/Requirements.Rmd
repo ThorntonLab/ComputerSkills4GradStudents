@@ -8,7 +8,7 @@ In order of ease of use, the following operating systems will work:
 
 * Linux.  Basically any up-to-date release of any distribution.  Please be sure to 
   have Python 3 installed.  Most distros default to Python 2, and 3 must be installed separately.
-* Apple's OS X.  Preferably High Sierra or later.  A serious complication is that the file system
+* Apple's `macOS`.  Preferably High Sierra or later.  A serious complication is that the file system
   is not case-sensitive, meaning that `File.txt` and `file.txt` are treated as the same thing.
   You absolutely *must* have the appropriate version of `Xcode` installed for your system and have
   taken the extra steps to install the command line tools for that version of `Xcode`.  It is
@@ -25,7 +25,7 @@ In order of ease of use, the following operating systems will work:
 This is the home team OS for scientific computing. Most of your problems will be interacting
 with collaborators using Microsoft Office, Adobe products, etc..
 
-## Issues with OS X {#osxquirks}
+## Issues with `macOS` {#osxquirks}
 
 This OS is slowly being locked down so that applications installed from sources other
 than the App Store may run into issues.
@@ -34,7 +34,7 @@ than the App Store may run into issues.
 
 We will recommend `conda` in this course for package management, but that isn't always the right answer.
 For example, `conda` contains packages for `Rstudio`, \LaTeX\, and some others, but I **do not**
-recommend installing them this way onto OS X.  Rather, prefer the `.dmg` installers for these tools or,
+recommend installing them this way onto `macOS`.  Rather, prefer the `.dmg` installers for these tools or,
 in some cases, you need to use `brew`.
 
 ### Third party software after major updates
@@ -44,7 +44,7 @@ you should expect third party software (stuff not installed via the "App Store")
 all the time, and what does break could change each time, but stuff does break!  An incomplete
 list of things to monitor includes:
 
-* [MacTex](https://tug.org/mactex/), which is the typical way to get \LaTeX\ onto an OS X machine.
+* [MacTex](https://tug.org/mactex/), which is the typical way to get \LaTeX\ onto an `macOS` machine.
 * Your `conda` and `brew` installations.
 * [Inkscape](http://www.inkscape.org)
 * Any software installed into `/usr/local` may be deleted!! `brew`, for example, and most/all
@@ -53,7 +53,7 @@ list of things to monitor includes:
 
 ### Xcode
 
-You need to remember to update `Xcode` with each major OS X update, too!  And, don't forget the command
+You need to remember to update `Xcode` with each major `macOS` update, too!  And, don't forget the command
 line tools.
 
 ### Python 3
@@ -65,9 +65,9 @@ to install them.
 
 ### Unreliable behavior of programs using X11/XQuartz
 
-Unix programs with a graphical interface rely on the X11 graphics toolkit.  On OS X, this is provided
+Unix programs with a graphical interface rely on the X11 graphics toolkit.  On `macOS`, this is provided
 by [XQuartz](https://www.xquartz.org/).  It is not always straightforward to get programs using X11
-to work on current OS X releases.  For example, if you install `imagemagick` via `conda`, then
+to work on current `macOS` releases.  For example, if you install `imagemagick` via `conda`, then
 the `display` program (which displays graphics on the screen) probably won't work.  Instead, you will
 have to use the `open` command on the file, which will open `Preview`.  Other `imagemagick` binaries
 that don't require `X11`, such as `convert`, work just fine in my experience.  (I have the 
