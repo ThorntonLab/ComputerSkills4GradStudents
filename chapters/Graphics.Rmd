@@ -612,7 +612,7 @@ journals typically want high-resolution `TIFF` files.
 I will guess that many of the images shown in this chapter will have trouble being saved to file
 as-is.  Font sizes may not work out when you save to a certain size, etc..  In R, it is common that 
 what you see in a graphics window and what gets saved to a file differ subtly.  I have experienced this many 
-times on systems using the X11 graphics system (Linux and R on older versions of OS X).  In other words,
+times on systems using the X11 graphics system (Linux and R on older versions of `macOS`).  In other words,
 working on your plot by repeatedly saying `source('plot.R')` and looking at what pops out on the screen
 may not reflect what you get when you finally save it to a `pdf`.
 
@@ -637,7 +637,7 @@ format, bringing us to our final guideline:
 * Learn how to reliably convert between formats without losing quality.
 
 [ImageMagick](https://imagemagick.org/index.php) exists to help with this last guideline.  It is a command-line Swiss
-Army knife for image manipulation.  Yes, you could use various graphical tools to convert.  Apple's Preview on OS X is
+Army knife for image manipulation.  Yes, you could use various graphical tools to convert.  Apple's Preview on `macOS` is
 great for this, but it cannot be easily automated.
 
 For example, the following `bash` loop will convert all of your `pdf` files into 300 dpi `tiff` while also flattening
