@@ -28,22 +28,22 @@ Reasons to use `conda`:
 
 * You do not need privileged ("superuser") access to your machine.  By default, things are installed
   in your `$HOME` directory.
-* On systems like Apple's OS X, which has no package manager, you will now have one.
+* On systems like Apple's `macOS`, which has no package manager, you will now have one.
 * Packages are compiled in a consistent manner helping to prevent incompatibilities.
 * You may have multiple versions of the same software on your system via *environments*.
-* It is available for Linux, OS X, and Windows
+* It is available for Linux, `macOS`, and Windows
 
 For those familiar with Python's `virtualenv` feature, `conda` is a generalization of that concept
 to include software outside of the Python ecosystem.
 
-The major alternative to `conda` is [homebrew](https://brew.sh/), which is available for Linux and OS X.
+The major alternative to `conda` is [homebrew](https://brew.sh/), which is available for Linux and `macOS`.
 
 ### What it does and does not do
 
 Briefly, `conda` allows you to install packages, have multiple versions of those packages installed in different environments,
 and "dump" a list of these environment contents to file.  These files can be used to recreate the same environment on
 another machine of the *same* operating system.  `conda` does **not** allow the precise replication of environments
-between *different* operating systems.  For example, you cannot create an environment on OS X and then expect to replicate 
+between *different* operating systems.  For example, you cannot create an environment on `macOS` and then expect to replicate 
 it exactly on the Linux environment of the UCI HPC.  Simply put, there is no guarantee that the same versions of the same packages
 are available at the same time for all operating systems (and with those packages having the same versions of the same dependencies).
 
