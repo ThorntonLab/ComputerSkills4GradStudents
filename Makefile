@@ -18,6 +18,6 @@ all: ${PDFBOOK}
 clean:
 	rm -rf ${PDFBOOK} compskills.Rmd book_output/* *.svg *.png *.o figs/*_tikz.png figs/*_tikz.pdf figs/*_tikz.aux figs/*_tikz.log
 
-${PDFBOOK}: ${PYTHONFIGS} ${RMDFILES} ${BIBFILES} ${TEXFIGS} _bookdown.yml
+${PDFBOOK}: ${PYTHONFIGS} ${RMDFILES} ${BIBFILES} ${TEXFIGS} _bookdown.yml preamble.tex
 	RETICULATE_PYTHON=`which python3` PYTHONPATH=.. r -e 'bookdown::render_book("index.Rmd","bookdown::pdf_book",clean=T)'
 
