@@ -286,9 +286,7 @@ The following code generates the figure using `ggplot` and the results are shown
 ```{r ggplot2,fig.cap="The figure generated with ggplot2"}
 p <- ggplot(data=data,aes(x=scaled_time, y=meand, group=dist)) +
     facet_grid(fopt~mu,
-               # Need to convert fopt back to something printable,
-               # else we get 1,2,3 in our plot.
-			   labeller=label_bquote(rows = z[0] == .(as.character(fopt)),
+			   labeller=label_bquote(rows = z[0] == .(fopt),
 									  cols = mu == .(mu))) +
     geom_line(aes(color=dist)) +
     xlim(XLIM[1], XLIM[2]) +
