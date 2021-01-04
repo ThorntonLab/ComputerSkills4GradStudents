@@ -286,7 +286,7 @@ We can commit at will to this new branch.  If the changes are good, we can *merg
 them back into `master`.  If not, we can simply delete the entire new branch and literally
 nothing ever happened to master.
 
-```{r, echo=F, fig.cap="\\label{fig:gitbranches} Branches with git. Starting with the `master` branch in the upper left, we create a new branch called `feature` (1).  While working on `feature`, we add files and commit the changes (2).  When finished with the work, we switch back to the `master` branch and merge `feature` into `master` (3). The end result is that the `master` branch is updated to contain the changes from `feature` (4)."}
+```{r, echo=F, fig.align="center", out.width="60%", fig.cap="\\label{fig:gitbranches} Branches with git. Starting with the `master` branch in the upper left, we create a new branch called `feature` (1).  While working on `feature`, we add files and commit the changes (2).  When finished with the work, we switch back to the `master` branch and merge `feature` into `master` (3). The end result is that the `master` branch is updated to contain the changes from `feature` (4)."}
 knitr::include_graphics("figs/branches_tikz.png")
 ```
 
