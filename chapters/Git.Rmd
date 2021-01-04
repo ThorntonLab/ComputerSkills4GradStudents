@@ -79,8 +79,13 @@ git init
 ```
 
 The result is a new, empty repository.  It contains a single *branch*. A *branch* is a history
-of changes to the project.  The branch name is `master`.  Branches are very important and are 
+of changes to the project.  For most of you, the branch name is `master`.  Branches are very important and are 
 discussed below in \ref{gitbranches}.
+
+**NOTE:** *git* and *GitHub* are in the process of renaming the default branch from `master` to `main`.
+When you create a new repository on `GitHub`, this change has been made and the default branch will be called `main`.
+When creating a local repository, the instructions to change the branch name will be shown when it is time to push it to `GitHub`.
+We will see this in action in class.
 
 ### Clone an existing repository
 
@@ -185,7 +190,7 @@ If your repository is a clone from elsewhere, you'll eventually want to send you
 back to "home base":
 
 ```{sh, eval=F}
-git push origin master
+git push origin main
 ```
 
 More generally:
@@ -266,9 +271,9 @@ Imagine that you have the following situation;
 * A reviewer makes some suggestions that may or may not need to be implemented.
   Checking into this requires modifications to most of the files in your pipeline.
 
-What to do?  You could make all the edits and commits to your `master` branch, but this
+What to do?  You could make all the edits and commits to your `main` branch, but this
 is not ideal for a few reasons.  What if the reviewer's suggestion doesn't pan out?
-If that's the case, then you need to manually reset your master branch to the last
+If that's the case, then you need to manually reset your main branch to the last
 commit corresponding to your submitted paper.  It may be tough to find that commit
 in practice (but see \ref{gittags} for some strategies).
 
@@ -280,28 +285,28 @@ the problem.)
 
 A robust solution is to simply start a new history for these commits.  It 
 version control jargon, we will start a new *branch* of our code.  This branch
-will contain the commit history from a parent branch (often `master`), but
-new commits will not be added to `master`'s history, but rather to that of our branch.
+will contain the commit history from a parent branch (often `main`), but
+new commits will not be added to `main`'s history, but rather to that of our branch.
 We can commit at will to this new branch.  If the changes are good, we can *merge*
-them back into `master`.  If not, we can simply delete the entire new branch and literally
-nothing ever happened to master.
+them back into `main`.  If not, we can simply delete the entire new branch and literally
+nothing ever happened to main.
 
-```{r, echo=F, fig.cap="\\label{fig:gitbranches} Branches with git. Starting with the `master` branch in the upper left, we create a new branch called `feature` (1).  While working on `feature`, we add files and commit the changes (2).  When finished with the work, we switch back to the `master` branch and merge `feature` into `master` (3). The end result is that the `master` branch is updated to contain the changes from `feature` (4)."}
+```{r, echo=F, fig.cap="\\label{fig:gitbranches} Branches with git. Starting with the `main` branch in the upper left, we create a new branch called `feature` (1).  While working on `feature`, we add files and commit the changes (2).  When finished with the work, we switch back to the `main` branch and merge `feature` into `main` (3). The end result is that the `main` branch is updated to contain the changes from `feature` (4)."}
 knitr::include_graphics("figs/branches_tikz.png")
 ```
 
 Figure \ref{fig:gitbranches} shows a schematic of working with branches. In general,
-you probably don't want to work directly on your `master` branch most of the time
+you probably don't want to work directly on your `main` branch most of the time
 (see \ref{gitbestpractices}).  Branches have so many advantages that you should
 develop the habit of using them whenever possible.  The fact that you are not
-interfering with the `master` history of the project is invaluable.  Being able to
+interfering with the `main` history of the project is invaluable.  Being able to
 just delete a bad idea or something that just didn't work out is quite useful.
 
 When you do need to delete a branch:
 
 ```{sh, eval=F}
-# Go back to master
-git checkout master
+# Go back to main
+git checkout main
 git branch -d branchname
 ```
 
@@ -320,8 +325,8 @@ git checkout branchname
 ```
 
 When you create a branch, the new branches history starts off from whatever branch you were just on.
-For simplicity, we'll assume that that branch was `master`.  Thus, and new edits and commits are *on 
-top* of `master`'s history.
+For simplicity, we'll assume that that branch was `main`.  Thus, and new edits and commits are *on 
+top* of `main`'s history.
 
 Figure \@ref(fig:gitbranches) shows a one-liner, `git checkout -b branchname`.  This shorter command says,
 "if `branchname` does not exist *locally*, create it and check it out". (If it already exists, the command
@@ -348,7 +353,7 @@ via `git pull origin branchname`. However, that may not work out, which brings u
 I have painted a picture of branches consisting entirely of rainbows and unicorns.  There is,
 however, one situation where branches can get a bit ugly.  Considering the following case:
 
-* You are working on two non-`master` branches of your project.
+* You are working on two non-`main` branches of your project.
 * You merged branch `A`.
 * You want to merge branch `B`, which has edited a few of the same files that `A` did.
 
@@ -475,14 +480,14 @@ git commit analysis.R -m "Added code to verify calculation of X.  Closes #1."
 ```
 
 The `Closes #1` bit is some magic.  First, when this commit is pushed back to `GitHub`, the issue's page will show a link
-to the commit.  Second, if the commit is merged into the `master` branch, then issue number one will automatically *close*,
+to the commit.  Second, if the commit is merged into the `main` branch, then issue number one will automatically *close*,
 meaning that it is resolved.  There are other words you can use to do the same thing, and it is also possible to refer
 to issues in *other* repositories.  You can discover these features online.
 
 ### Pull requests {#githubprs}
 
 A *pull request*, or `PR`, is a special way to treat a branch on `GitHub`.  A `PR` represents a request
-to merge changes from a branch into `master`.  The `PR` may be accepted and merged or rejected and closed.
+to merge changes from a branch into `main`.  The `PR` may be accepted and merged or rejected and closed.
 Like issues, they are assigned a number and you may refer to that number in commit messages.  `PR`s
 are an important tool for collaboration, and I suggest you
 [read about them](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
@@ -547,9 +552,9 @@ repository (see \ref{gitbestpractices}).
 
 ## Git and GitHub "best practices" {#gitbestpractices}
 
-### Try not to work on your master branch
+### Try not to work on your main branch
 
-Treat your `master` branch as a special place.  Ideally, it represents code that is known 
+Treat your `main` branch as a special place.  Ideally, it represents code that is known 
 to work.  Use branches for making changes.
 
 ### Use issue tracking

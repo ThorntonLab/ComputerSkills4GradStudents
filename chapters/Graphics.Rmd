@@ -76,9 +76,6 @@ belong in publications and that accurately reflect your data and results.
 
 ### An example data set 
 
-```{r thornton2019,echo=F, fig.cap="Figure 7a from @Thornton2019-hh. The figure is reproduced here under the terms of the Creative Commons License."} 
-knitr::include_graphics("figs/MeanTajdTenLoci.png")
-```
 
 We need a data set for plotting.  Instead of using one of the built-in data sets in `R`, we will take a reduced data
 set from a recent paper of mine.  The full version of the data set leads to Figure \ref{fig:thornton2019}.  The figure
