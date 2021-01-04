@@ -76,7 +76,7 @@ belong in publications and that accurately reflect your data and results.
 
 ### An example data set 
 
-```{r thornton2019,echo=F, fig.cap="Figure 7a from @Thornton2019-hh. The figure is reproduced here under the terms of the Creative Commons License."} 
+```{r thornton2019,echo=F, fig.cap="Figure 7a from \\cite{Thornton2019-hh}. The figure is reproduced here under the terms of the Creative Commons License."} 
 knitr::include_graphics("figs/MeanTajdTenLoci.png")
 ```
 
