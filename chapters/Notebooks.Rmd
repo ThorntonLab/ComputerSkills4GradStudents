@@ -32,7 +32,7 @@ Broman's [blog](https://kbroman.org) and to also follow him on Twitter.
 `R` packages, and interact with the traditional `R` shell with the graphics popping up in a window on the right
 (Figure \ref{fig:rstudio_linux}).
 
-```{r, echo=F, fig.cap="\\label{fig:rstudio_linux}R Studio on the author's laptop running the Pop! OS 19.10 Linux distribution"}
+```{r, echo=F, out.height="4in", out.width="4in", fig.align="center", fig.cap="\\label{fig:rstudio_linux}R Studio on the author's laptop running the Pop! OS 19.10 Linux distribution"}
 knitr::include_graphics("figs/rstudio_linux.png")
 ```
 
