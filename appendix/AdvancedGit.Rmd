@@ -1,5 +1,0 @@
-# Advanced git {#advancedgit}
-
-There is nothing here yet.  The stuff that should be here has the potential
-to cause a `gitastrophe`, meaning that you may do damage to you repo that is
-hard/impossible to undo.  More in a future version...
