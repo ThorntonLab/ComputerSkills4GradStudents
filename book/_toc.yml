@@ -1,0 +1,14 @@
+format: jb-book
+root: markdown/intro
+parts:
+- caption: Managing reproducible environments
+  chapters:
+  - file: markdown/reproducible_environments/intro
+  - file: markdown/reproducible_environments/venvs
+    sections:
+    - file: markdown/reproducible_environments/venvs/management
+  - file: markdown/reproducible_environments/conda
+  - file: markdown/reproducible_environments/renv
+- caption: A tour of programming concepts
+  chapters:
+  - file: markdown/programming_concepts/variables

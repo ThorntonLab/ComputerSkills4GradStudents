@@ -1,9 +1,0 @@
-# Preface
-
-This book is my attempt to provide a "textbook" for a graduate-level class on "bioinformatics" skills for PhD
-students that I team teach with Tony Long at UCI.  The course is the second in a series.  J.J. Emerson teaches
-the first quarter, which is loosely arranged around Vince Buffalo's book [@Buffalo2015-tj].
-
-The contents of the book will be terse and idiosyncratic in places.  The goal is to provide readings for 
-the first half of the class, which can be broadly defined as "skills for reproducible computational research".
-
