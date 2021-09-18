@@ -72,12 +72,12 @@ jobs:
 
       - name: Move built HTML book
         working-directory: book
-        if: github.event_name == 'release'
+        if: github.event.pull_request.merged == true
         run: |
           mv _build/html ../book_output
 
       - name: Upload artifacts
-        if: github.event_name == 'release'
+        if: github.event.pull_request.merged == true
         uses: actions/upload-artifact@v1
         with:
           name: book_output
