@@ -72,12 +72,12 @@ jobs:
 
       - name: Move built HTML book
         working-directory: book
-        if: github.event_name == 'release'
+        if: github.ref == 'refs/heads/main'
         run: |
           mv _build/html ../book_output
 
       - name: Upload artifacts
-        if: github.event_name == 'release'
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v1
         with:
           name: book_output
@@ -86,7 +86,7 @@ jobs:
   deploy:
     name: deploy
     needs: buildbook
-    if: github.event.pull_request.merged == true
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-20.04
     defaults:
       run:
