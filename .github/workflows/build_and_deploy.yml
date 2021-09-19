@@ -30,18 +30,36 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Cache dependancies
-        id: cache
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.r }}
+
+      - name: Test R
+        run: |
+          Rscript -e 'print("hello")'
+          echo ${{ env.R_LIBS_USER }}
+
+      - name: Cache Python dependencies
+        id: pycache
         uses: actions/cache@v2
         with:
           path: |
             ~/.local
           key: ${{ matrix.python }}-${{ hashFiles('book/requirements.txt') }}
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - name: Cache R dependencies
+        id: rcache
+        uses: actions/cache@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          path: |
+            ${{ env.R_LIBS_USER }}
+          key: ${{ matrix.r }}-${{ hashFiles('.github/depends.Rds') }}
 
       - name: Edit PATH
         run: |
@@ -51,18 +69,18 @@ jobs:
         run: |
           python -m pip install --user --upgrade -r book/requirements.txt
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-        with:
-          r-version: ${{ matrix.r }}
 
-      - name: Test R
-        run: Rscript -e 'print("hello")'
-
-      - name: Install IRkernel 
+      - name: Install IRkernel and remotes
         run: |
           install.packages('IRkernel')
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           IRkernel::installspec()
+        shell: Rscript {0}
+
+      - name: Install R dependencies
+        run: |
+          remotes::install_deps(dependencies=TRUE)
         shell: Rscript {0}
 
       - name: Build the book

@@ -4,11 +4,22 @@ parts:
 - caption: Managing reproducible environments
   chapters:
   - file: markdown/reproducible_environments/intro
+  - file: markdown/reproducible_environments/goals
   - file: markdown/reproducible_environments/venvs
     sections:
     - file: markdown/reproducible_environments/venvs/management
-  - file: markdown/reproducible_environments/conda
+    - file: markdown/reproducible_environments/venvs/description
+    - file: markdown/reproducible_environments/venvs/installing
+    - file: markdown/reproducible_environments/venvs/lockfiles
   - file: markdown/reproducible_environments/renv
+  - file: markdown/reproducible_environments/conda
+    sections:
+    - file: markdown/reproducible_environments/conda/installing
+    - file: markdown/reproducible_environments/conda/channels
+    - file: markdown/reproducible_environments/conda/management
+    - file: markdown/reproducible_environments/conda/installingsoftware
+    - file: markdown/reproducible_environments/conda/condaupdate
+  - file: markdown/reproducible_environments/realitycheck
 - caption: A tour of programming concepts
   chapters:
   - file: markdown/programming_concepts/variables
