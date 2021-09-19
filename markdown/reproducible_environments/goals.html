@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Computer skills for graduate students</title>
+    <title>Defining the goals &#8212; Computer skills for graduate students</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Defining the goals" href="goals.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="Python virtual environments" href="venvs.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,13 +95,13 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Introduction
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="goals.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Defining the goals
   </a>
  </li>
@@ -282,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/markdown/reproducible_environments/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/markdown/reproducible_environments/goals.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/goals.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -323,6 +323,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-do-we-want-to-accomplish">
+   What do we want to accomplish?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-environments">
+   “Clean” environments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-not-just-install-everything-in-the-default-location">
+   Why not just install everything in the “default location”?
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -331,32 +354,51 @@
         
               <div>
                 
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>When you work on a project involving software, the code that you write will depend on other code.
-These other pieces of code are <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> of your project – your project must have access to them in order to work.</p>
-<p>For example, an <code class="docutils literal notranslate"><span class="pre">R</span></code> script using <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a> to produce plots from data cannot work unless that package is installed into a local <code class="docutils literal notranslate"><span class="pre">R</span></code> environment.</p>
-<p>When people start out with <code class="docutils literal notranslate"><span class="pre">R</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Python</span></code>, they will often install dependencies haphazardly, installing whatever they need as they need it.
-This approach works, but it has its drawbacks.
-For example, you get a new laptop and you move your code onto it.
-Nothing works!
-Why?
-<em>The dependencies are not there.</em>
-In the absence of the methods described in the next few sections, your only option is to install things by trial and error, using the following algorithm:</p>
-<ol class="simple">
-<li><p>Attempt to run your code.
-If it works, to to step <code class="docutils literal notranslate"><span class="pre">5</span></code>.
-If not, proceed to step <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
-<li><p>If you see an error about a missing dependency (“package not found”, etc.), go to step <code class="docutils literal notranslate"><span class="pre">3</span></code>.
-If you see an error you cannot understand, go to step <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
-<li><p>Install the missing dependency.
-Return to step <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p>Give up.</p></li>
-<li><p>Terminate the algorithm.
-Your code is working again.</p></li>
-</ol>
-<p>Clearly, this approach is inefficient.
-The next several sections discuss better approaches.</p>
+  <div class="section" id="defining-the-goals">
+<h1>Defining the goals<a class="headerlink" href="#defining-the-goals" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-do-we-want-to-accomplish">
+<h2>What do we want to accomplish?<a class="headerlink" href="#what-do-we-want-to-accomplish" title="Permalink to this headline">¶</a></h2>
+<p>We want you to be able to describe what software your own code needs in order to work.
+This description should be <em>shareable</em>, allowing <em>someone else</em> to run your code.</p>
+<p>Hint: that “someone else” is usually <em>you</em>, several months down the road.
+You didn’t get as much done this quarter due to a heavy work load as a TA.
+You were gone all summer in the field.
+When you get back to your computer, you need to figure out where you left off.
+Being able to specify your project’s <em>software environment</em> is a key part of figuring that out.</p>
+<p>The other very important case is when you get a new computer!
+Being able to copy your environment specifications to the new machine is a big help.</p>
+</div>
+<div class="section" id="clean-environments">
+<h2>“Clean” environments<a class="headerlink" href="#clean-environments" title="Permalink to this headline">¶</a></h2>
+<p>The goal is to get you used to starting “clean” environments for your projects.
+What does this mean?</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p>You are about to start working on some Python code.</p></li>
+<li><p>You start a new environment that has <em>nothing</em> in it other than Python.</p></li>
+<li><p>You add to that just what you need.</p></li>
+</ul>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">Python</span></code> with <code class="docutils literal notranslate"><span class="pre">R</span></code> in the above for other projects.
+Heck, you can even have both languages in the same project, and the same idea applies.</p>
+</div>
+<div class="section" id="why-not-just-install-everything-in-the-default-location">
+<h2>Why not just install everything in the “default location”?<a class="headerlink" href="#why-not-just-install-everything-in-the-default-location" title="Permalink to this headline">¶</a></h2>
+<p>Why not just install all of your <code class="docutils literal notranslate"><span class="pre">R</span></code> packages with <code class="docutils literal notranslate"><span class="pre">RStudio</span></code> like you’ve already been doing?
+Why not just let <code class="docutils literal notranslate"><span class="pre">Python</span></code> put things wherever it wants to?</p>
+<p>You can!
+It’ll work great for you.
+But, your work will be less <em>shareable</em>.
+The reason for this is subtle.
+You will give <em>someone else</em> the file specifying your software environment.
+It won’t work for them.
+But, it does work for you.
+It even works if you attempt to clean out your system and reinstall stuff.
+What is going on?
+The odds are that it works for you because you have an unspecified dependency installed somewhere “globally”.</p>
+<p>Starting with clean environments prevents this problem.
+It also helps you move your work from one machine to another.
+For example, from your laptop to your institution’s cluster.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -389,7 +431,7 @@ The next several sections discuss better approaches.</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../intro.html" title="previous page">
+        <a class="left-prev" href="intro.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
@@ -398,10 +440,10 @@ The next several sections discuss better approaches.</p>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="goals.html" title="next page">
+        <a class="right-next" href="venvs.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Defining the goals</p>
+                <p class="prevnext-title">Python virtual environments</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

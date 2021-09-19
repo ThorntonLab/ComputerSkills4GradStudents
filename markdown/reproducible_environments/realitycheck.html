@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Computer skills for graduate students</title>
+    <title>A reality check &#8212; Computer skills for graduate students</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Defining the goals" href="goals.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="Variables" href="../programming_concepts/variables.html" />
+    <link rel="prev" title="Never run conda update conda in an environment" href="conda/condaupdate.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,8 +95,8 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Introduction
   </a>
  </li>
@@ -224,8 +224,8 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="realitycheck.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    A reality check
   </a>
  </li>
@@ -282,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/markdown/reproducible_environments/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/markdown/reproducible_environments/realitycheck.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/realitycheck.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -323,6 +323,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-long-is-an-environment-good-for">
+   How long is an environment good for?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transferring-environments-between-operating-systems">
+   Transferring environments between operating systems.
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -331,32 +349,37 @@
         
               <div>
                 
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>When you work on a project involving software, the code that you write will depend on other code.
-These other pieces of code are <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> of your project – your project must have access to them in order to work.</p>
-<p>For example, an <code class="docutils literal notranslate"><span class="pre">R</span></code> script using <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a> to produce plots from data cannot work unless that package is installed into a local <code class="docutils literal notranslate"><span class="pre">R</span></code> environment.</p>
-<p>When people start out with <code class="docutils literal notranslate"><span class="pre">R</span></code> and/or <code class="docutils literal notranslate"><span class="pre">Python</span></code>, they will often install dependencies haphazardly, installing whatever they need as they need it.
-This approach works, but it has its drawbacks.
-For example, you get a new laptop and you move your code onto it.
-Nothing works!
-Why?
-<em>The dependencies are not there.</em>
-In the absence of the methods described in the next few sections, your only option is to install things by trial and error, using the following algorithm:</p>
-<ol class="simple">
-<li><p>Attempt to run your code.
-If it works, to to step <code class="docutils literal notranslate"><span class="pre">5</span></code>.
-If not, proceed to step <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p></li>
-<li><p>If you see an error about a missing dependency (“package not found”, etc.), go to step <code class="docutils literal notranslate"><span class="pre">3</span></code>.
-If you see an error you cannot understand, go to step <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p></li>
-<li><p>Install the missing dependency.
-Return to step <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
-<li><p>Give up.</p></li>
-<li><p>Terminate the algorithm.
-Your code is working again.</p></li>
-</ol>
-<p>Clearly, this approach is inefficient.
-The next several sections discuss better approaches.</p>
+  <div class="section" id="a-reality-check">
+<h1>A reality check<a class="headerlink" href="#a-reality-check" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-long-is-an-environment-good-for">
+<h2>How long is an environment good for?<a class="headerlink" href="#how-long-is-an-environment-good-for" title="Permalink to this headline">¶</a></h2>
+<p>The short answer is, “not very”.
+Due to the complexities of dependencies depending on other dependencies, and the lack of global agreement on whether “lock” files are a good idea, it is unrealistic to expect an environment file to “just work” at some arbitrary point in the future.</p>
+<p>These days, <code class="docutils literal notranslate"><span class="pre">conda</span></code> environments seem to have rather short “shelf lives”.</p>
+<p>A practical solution is to keep a <em>minimal</em> file specifying your environment.
+For example, a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file with only the package names.
+This file is your <em>long term</em> specification of your environment.
+In the <em>short term</em>, lock files may be useful to you.</p>
+</div>
+<div class="section" id="transferring-environments-between-operating-systems">
+<h2>Transferring environments between operating systems.<a class="headerlink" href="#transferring-environments-between-operating-systems" title="Permalink to this headline">¶</a></h2>
+<p>Example:</p>
+<ul class="simple">
+<li><p>You set up and tested your <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment on your <code class="docutils literal notranslate"><span class="pre">macOS</span></code> laptop.</p></li>
+<li><p>It works!
+Now, you need to set it up you your institutions’ Linux-based cluster.</p></li>
+<li><p>You <code class="docutils literal notranslate"><span class="pre">rsync</span></code> your <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file over.
+This file pins precise version numbers, and is thus a “lock” file.</p></li>
+</ul>
+<p>In general, this procedure will not work.
+It <em>may</em> work with simple Python <code class="docutils literal notranslate"><span class="pre">venvs</span></code>.
+It <em>may</em> also work with <code class="docutils literal notranslate"><span class="pre">R</span></code> environments.
+However, experience shows that it almost certainly <em>will not</em> work with <code class="docutils literal notranslate"><span class="pre">conda</span></code>.
+There is no guarantee that the exact same versions of the exact same things exist for all operating systems on all <code class="docutils literal notranslate"><span class="pre">conda</span></code> channels.</p>
+<p>The solution is to strip down to a <em>minimal</em> environment file for your <code class="docutils literal notranslate"><span class="pre">conda</span></code> setup.
+At first, avoid version number pinning.
+Add in the pinning later once things are working.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -389,19 +412,19 @@ The next several sections discuss better approaches.</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../intro.html" title="previous page">
+        <a class="left-prev" href="conda/condaupdate.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Introduction</p>
+                <p class="prevnext-title">Never run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">update</span> <span class="pre">conda</span></code> in an environment</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="goals.html" title="next page">
+        <a class="right-next" href="../programming_concepts/variables.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Defining the goals</p>
+                <p class="prevnext-title">Variables</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

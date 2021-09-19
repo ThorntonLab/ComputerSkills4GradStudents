@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>R virtual environments &#8212; Computer skills for graduate students</title>
+    <title>Managing R dependencies &#8212; Computer skills for graduate students</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Variables" href="../programming_concepts/variables.html" />
-    <link rel="prev" title="Conda environments" href="conda.html" />
+    <link rel="next" title="Conda environments" href="conda.html" />
+    <link rel="prev" title="Reproducing your venv" href="venvs/lockfiles.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -100,6 +100,11 @@
    Introduction
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="goals.html">
+   Defining the goals
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="venvs.html">
    Python virtual environments
@@ -115,16 +120,113 @@
      Management
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="venvs/description.html">
+     What is in our
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       venv
+      </span>
+     </code>
+     ?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="venvs/installing.html">
+     Installing new software
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="venvs/lockfiles.html">
+     Reproducing your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       venv
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="conda.html">
-   Conda environments
-  </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   R virtual environments
+   Managing
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     R
+    </span>
+   </code>
+   dependencies
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="conda.html">
+   Conda environments
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conda/installing.html">
+     Installing
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       conda
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conda/channels.html">
+     Setting up channels
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conda/management.html">
+     Managing
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       conda
+      </span>
+     </code>
+     environments.
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conda/installingsoftware.html">
+     Installing software using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       conda
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conda/condaupdate.html">
+     Never run
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       conda
+      </span>
+      <span class="pre">
+       update
+      </span>
+      <span class="pre">
+       conda
+      </span>
+     </code>
+     in an environment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="realitycheck.html">
+   A reality check
   </a>
  </li>
 </ul>
@@ -241,6 +343,64 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functionality-in-base-r">
+   Functionality in
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     base
+    </span>
+   </code>
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     R
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-description-file">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     DESCRIPTION
+    </span>
+   </code>
+   file
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-remotes-library">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       remotes
+      </span>
+     </code>
+     library
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-renv-library">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     renv
+    </span>
+   </code>
+   library
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -249,14 +409,100 @@
         
               <div>
                 
-  <div class="section" id="r-virtual-environments">
-<h1>R virtual environments<a class="headerlink" href="#r-virtual-environments" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="managing-r-dependencies">
+<h1>Managing <code class="docutils literal notranslate"><span class="pre">R</span></code> dependencies<a class="headerlink" href="#managing-r-dependencies" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functionality-in-base-r">
+<h2>Functionality in <code class="docutils literal notranslate"><span class="pre">base</span></code> <code class="docutils literal notranslate"><span class="pre">R</span></code><a class="headerlink" href="#functionality-in-base-r" title="Permalink to this headline">¶</a></h2>
+<p>Get a list of all currently-loaded libraries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">.packages</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'stats'</li><li>'graphics'</li><li>'grDevices'</li><li>'utils'</li><li>'datasets'</li><li>'methods'</li><li>'base'</li></ol>
+</div></div>
+</div>
+<p>See it change as we load a new library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘dplyr’
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:stats’:
+
+    filter, lag
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">.packages</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'dplyr'</li><li>'stats'</li><li>'graphics'</li><li>'grDevices'</li><li>'utils'</li><li>'datasets'</li><li>'methods'</li><li>'base'</li></ol>
+</div></div>
+</div>
+<p>To install a new library:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;dplyr&quot;</span><span class="p">,</span> <span class="n">dependencies</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">RStudio</span></code>, select the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu, then, <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">packages</span></code>.</p>
+</div>
+<div class="section" id="the-description-file">
+<h2>The <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> file<a class="headerlink" href="#the-description-file" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">R</span></code> analog to Python’s <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> is a <a class="reference external" href="https://r-pkgs.org/description.html">DESCRIPTION</a> file.
+Any package that you <code class="docutils literal notranslate"><span class="pre">library()</span></code> and use can go in this file.</p>
+<p>A very minimal file may look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Depends</span><span class="p">:</span>
+    <span class="n">R</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="mf">4.1</span><span class="p">)</span>
+<span class="n">Imports</span><span class="p">:</span>
+    <span class="n">dplyr</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> file is one of many files needed for a “proper” <code class="docutils literal notranslate"><span class="pre">R</span></code> package.
+By “proper”, I mean one that you intend to distribute via <a class="reference external" href="https://cran.r-project.org/">CRAN</a>.
+Here, I am only illustrating its use as a way to list dependencies.</p>
+</div>
+<div class="section" id="the-remotes-library">
+<h3>The <code class="docutils literal notranslate"><span class="pre">remotes</span></code> library<a class="headerlink" href="#the-remotes-library" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://cran.r-project.org/web/packages/remotes/index.html">remotes</a> library can install the things listed in your <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> file:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">remotes</span><span class="o">::</span><span class="nf">install_deps</span><span class="p">(</span><span class="n">dependencies</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-renv-library">
+<h2>The <code class="docutils literal notranslate"><span class="pre">renv</span></code> library<a class="headerlink" href="#the-renv-library" title="Permalink to this headline">¶</a></h2>
+<p>To install <code class="docutils literal notranslate"><span class="pre">R</span></code> packages into a separate, clean, environment, use <a class="reference external" href="https://rstudio.github.io/renv/articles/renv.html">renv</a>.
+You will want to experiment/play with this on your own before “diving in”.
+Using <code class="docutils literal notranslate"><span class="pre">renv</span></code> affects your work flow, but it will work as advertised.</p>
 </div>
 </div>
 
@@ -290,19 +536,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="conda.html" title="previous page">
+        <a class="left-prev" href="venvs/lockfiles.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Conda environments</p>
+                <p class="prevnext-title">Reproducing your <code class="docutils literal notranslate"><span class="pre">venv</span></code></p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../programming_concepts/variables.html" title="next page">
+        <a class="right-next" href="conda.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Variables</p>
+                <p class="prevnext-title">Conda environments</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

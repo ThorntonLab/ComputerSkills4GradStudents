@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Management &#8212; Computer skills for graduate students</title>
+    <title>Reproducing your venv &#8212; Computer skills for graduate students</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="What is in our venv?" href="description.html" />
-    <link rel="prev" title="Python virtual environments" href="../venvs.html" />
+    <link rel="next" title="Managing R dependencies" href="../renv.html" />
+    <link rel="prev" title="Installing new software" href="installing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -115,8 +115,8 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="management.html">
      Management
     </a>
    </li>
@@ -136,8 +136,8 @@
      Installing new software
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lockfiles.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Reproducing your
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -280,9 +280,12 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../../../_sources/markdown/reproducible_environments/venvs/lockfiles.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/markdown/reproducible_environments/venvs/management.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/markdown/reproducible_environments/venvs/lockfiles.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +305,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/venvs/management.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/venvs/lockfiles.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -318,6 +321,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/markdown/reproducible_environments/venvs/lockfiles.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -328,46 +348,44 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Management
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#keep-all-of-your-venvs-in-one-place">
-     Keep all of your venvs in one place
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-venv">
-     Create a venv
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#activate-your-new-venv">
-     Activate your new venv
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deactivate">
-     Deactivate
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removal">
-     Removal
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alternatives">
-   Alternatives
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-pip-freeze-command">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pip
+    </span>
+    <span class="pre">
+     freeze
+    </span>
+   </code>
+   command
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-the-results">
+   Saving the results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-your-lockfile-to-recreate-your-venv-elsewhere">
+   Using your lockfile to recreate your
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     venv
+    </span>
+   </code>
+   elsewhere.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-method">
+   Another method.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-alternatives">
+   Other alternatives
   </a>
  </li>
 </ul>
@@ -381,65 +399,202 @@
         
               <div>
                 
-  <div class="section" id="management">
-<h1>Management<a class="headerlink" href="#management" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="keep-all-of-your-venvs-in-one-place">
-<h2>Keep all of your venvs in one place<a class="headerlink" href="#keep-all-of-your-venvs-in-one-place" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir ~/venvs/
+  <div class="section" id="reproducing-your-venv">
+<h1>Reproducing your <code class="docutils literal notranslate"><span class="pre">venv</span></code><a class="headerlink" href="#reproducing-your-venv" title="Permalink to this headline">¶</a></h1>
+<p>You have created a <code class="docutils literal notranslate"><span class="pre">venv</span></code>.
+During the course of your work, you have <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>ed a lot of things.
+What is in your <code class="docutils literal notranslate"><span class="pre">venv</span></code>?</p>
+<div class="section" id="the-pip-freeze-command">
+<h2>The <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> command<a class="headerlink" href="#the-pip-freeze-command" title="Permalink to this headline">¶</a></h2>
+<p>Type this (in your <em>activated</em> <code class="docutils literal notranslate"><span class="pre">venv</span></code>, of course):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip freeze
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-a-venv">
-<h2>Create a venv<a class="headerlink" href="#create-a-venv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m venv ~/venvs/my_new_venv
-</pre></div>
-</div>
-</div>
-<div class="section" id="activate-your-new-venv">
-<h2>Activate your new venv<a class="headerlink" href="#activate-your-new-venv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/venvs/my_new_venv/bin/activate
-</pre></div>
-</div>
-</div>
-<div class="section" id="deactivate">
-<h2>Deactivate<a class="headerlink" href="#deactivate" title="Permalink to this headline">¶</a></h2>
-<p>When you are done working:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>deactivate
-</pre></div>
-</div>
-<p>Another option is to simply close your terminal.</p>
-</div>
-<div class="section" id="removal">
-<h2>Removal<a class="headerlink" href="#removal" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -rf ~/venvs/my_new_venv
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="alternatives">
-<h1>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h1>
-<p>You may put your venvs wherever you like.
-You just have to give the path to wherever you want it.
-To create one in your current working directory:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python -m venv venv_in_cwd
-</pre></div>
-</div>
-<p>All of the above still applies. Only the path has changed.</p>
-</div>
-<div class="section" id="questions">
-<h1>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
+<p>Concrete example:</p>
 <ul>
-<li><p>The command shown above for removing a venv is dangerous!
-What is the difference between the following two commands?</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -f ~/venvs/my_new_venv
+<li><p>If you have an activated <code class="docutils literal notranslate"><span class="pre">venv</span></code>, <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> it.</p></li>
+<li><p>Create a new one.</p></li>
+<li><p>Activate it, then</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install pandas
 </pre></div>
 </div>
-<p>and</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -f ~/venvs
+</li>
+<li><p>Now, say</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip freeze
 </pre></div>
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="saving-the-results">
+<h2>Saving the results<a class="headerlink" href="#saving-the-results" title="Permalink to this headline">¶</a></h2>
+<p>Use redirection to save the output from <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip freeze &gt; lockfile.txt
+</pre></div>
+</div>
+<p>This “lock” file has the same type of contents as found in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.
+The differences are:</p>
+<ul class="simple">
+<li><p>The lock file contains <strong>nearly everything</strong> in your <code class="docutils literal notranslate"><span class="pre">venv</span></code>.
+(The “nearly” is because a few packages that are always there are not included.)</p></li>
+<li><p>The precise version of everything is included.</p></li>
+</ul>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> for this book is:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>alabaster==0.7.12
+anyio==3.3.1
+argon2-cffi==21.1.0
+attrs==20.3.0
+Babel==2.9.1
+backcall==0.2.0
+beautifulsoup4==4.10.0
+bleach==4.1.0
+certifi==2021.5.30
+cffi==1.14.6
+charset-normalizer==2.0.6
+click==7.1.2
+colorama==0.4.4
+cycler==0.10.0
+debugpy==1.4.3
+decorator==5.1.0
+defusedxml==0.7.1
+docutils==0.16
+entrypoints==0.3
+gitdb==4.0.7
+GitPython==3.1.24
+greenlet==1.1.1
+idna==3.2
+imagesize==1.2.0
+importlib-metadata==4.8.1
+importlib-resources==5.2.2
+ipykernel==6.4.1
+ipython==7.27.0
+ipython-genutils==0.2.0
+ipywidgets==7.6.5
+jedi==0.18.0
+Jinja2==3.0.1
+jsonschema==3.2.0
+jupyter-book==0.11.3
+jupyter-cache==0.4.3
+jupyter-client==7.0.3
+jupyter-core==4.8.1
+jupyter-server==1.11.0
+jupyter-server-mathjax==0.2.3
+jupyter-sphinx==0.3.2
+jupyterlab-widgets==1.0.2
+jupytext==1.10.3
+kiwisolver==1.3.2
+latexcodec==2.0.1
+linkify-it-py==1.0.1
+markdown-it-py==0.6.2
+MarkupSafe==2.0.1
+matplotlib==3.4.3
+matplotlib-inline==0.1.3
+mdit-py-plugins==0.2.6
+mistune==0.8.4
+myst-nb==0.12.3
+myst-parser==0.13.7
+nbclient==0.5.4
+nbconvert==5.6.1
+nbdime==3.1.0
+nbformat==5.1.3
+nest-asyncio==1.5.1
+notebook==6.4.4
+numpy==1.21.2
+packaging==21.0
+pandocfilters==1.5.0
+parso==0.8.2
+pexpect==4.8.0
+pickleshare==0.7.5
+Pillow==8.3.2
+prometheus-client==0.11.0
+prompt-toolkit==3.0.20
+ptyprocess==0.7.0
+pybtex==0.24.0
+pybtex-docutils==1.0.1
+pycparser==2.20
+pydata-sphinx-theme==0.6.3
+Pygments==2.10.0
+pyparsing==2.4.7
+pyrsistent==0.18.0
+python-dateutil==2.8.2
+pytz==2021.1
+PyYAML==5.4.1
+pyzmq==22.3.0
+requests==2.26.0
+requests-unixsocket==0.2.0
+Send2Trash==1.8.0
+six==1.16.0
+smmap==4.0.0
+sniffio==1.2.0
+snowballstemmer==2.1.0
+soupsieve==2.2.1
+Sphinx==3.5.4
+sphinx-book-theme==0.1.3
+sphinx-comments==0.0.3
+sphinx-copybutton==0.4.0
+sphinx-external-toc==0.2.3
+sphinx-jupyterbook-latex==0.4.2
+sphinx-multitoc-numbering==0.1.3
+sphinx-panels==0.5.2
+sphinx-thebe==0.0.10
+sphinx-togglebutton==0.2.3
+sphinxcontrib-applehelp==1.0.2
+sphinxcontrib-bibtex==2.2.1
+sphinxcontrib-devhelp==1.0.2
+sphinxcontrib-htmlhelp==2.0.0
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-qthelp==1.0.3
+sphinxcontrib-serializinghtml==1.1.5
+SQLAlchemy==1.4.23
+terminado==0.12.1
+testpath==0.5.0
+toml==0.10.2
+tornado==6.1
+traitlets==5.1.0
+typing-extensions==3.10.0.2
+uc-micro-py==1.0.1
+urllib3==1.26.6
+wcwidth==0.2.5
+webencodings==0.5.1
+websocket-client==1.2.1
+widgetsnbextension==3.5.1
+zipp==3.5.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-your-lockfile-to-recreate-your-venv-elsewhere">
+<h2>Using your lockfile to recreate your <code class="docutils literal notranslate"><span class="pre">venv</span></code> elsewhere.<a class="headerlink" href="#using-your-lockfile-to-recreate-your-venv-elsewhere" title="Permalink to this headline">¶</a></h2>
+<p>You are happy with your <code class="docutils literal notranslate"><span class="pre">venv</span></code> on your laptop.
+Your code works, etc..
+Now, you need to “scale up” and run your work flow on a more powerful machine:</p>
+<ul>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">venv</span></code> on that machine.</p></li>
+<li><p>Activate it.</p></li>
+<li><p>Say:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install -r lockfile.txt
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Voila!
+You have reproduced your environment on another machine.</p>
+<p>This file is called a “lock” file because it locks each listed dependency to a specific version.</p>
+</div>
+<div class="section" id="another-method">
+<h2>Another method.<a class="headerlink" href="#another-method" title="Permalink to this headline">¶</a></h2>
+<p>Simply install from your <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.
+Often, the full “lock” file is overkill.</p>
+</div>
+<div class="section" id="other-alternatives">
+<h2>Other alternatives<a class="headerlink" href="#other-alternatives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jazzband/pip-tools">pip-tools</a></p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -472,19 +627,19 @@ What is the difference between the following two commands?</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../venvs.html" title="previous page">
+        <a class="left-prev" href="installing.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Python virtual environments</p>
+                <p class="prevnext-title">Installing new software</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="description.html" title="next page">
+        <a class="right-next" href="../renv.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">What is in our <code class="docutils literal notranslate"><span class="pre">venv</span></code>?</p>
+                <p class="prevnext-title">Managing <code class="docutils literal notranslate"><span class="pre">R</span></code> dependencies</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

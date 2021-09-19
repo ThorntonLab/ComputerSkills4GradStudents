@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Management &#8212; Computer skills for graduate students</title>
+    <title>What is in our venv? &#8212; Computer skills for graduate students</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="What is in our venv?" href="description.html" />
-    <link rel="prev" title="Python virtual environments" href="../venvs.html" />
+    <link rel="next" title="Installing new software" href="installing.html" />
+    <link rel="prev" title="Management" href="management.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -115,13 +115,13 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="management.html">
      Management
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="description.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      What is in our
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -282,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/markdown/reproducible_environments/venvs/management.md"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/markdown/reproducible_environments/venvs/description.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/venvs/management.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown/reproducible_environments/venvs/description.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -328,46 +328,9 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Management
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#keep-all-of-your-venvs-in-one-place">
-     Keep all of your venvs in one place
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-venv">
-     Create a venv
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#activate-your-new-venv">
-     Activate your new venv
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deactivate">
-     Deactivate
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removal">
-     Removal
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alternatives">
-   Alternatives
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-we-learned">
+   What we learned
   </a>
  </li>
 </ul>
@@ -381,65 +344,53 @@
         
               <div>
                 
-  <div class="section" id="management">
-<h1>Management<a class="headerlink" href="#management" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="keep-all-of-your-venvs-in-one-place">
-<h2>Keep all of your venvs in one place<a class="headerlink" href="#keep-all-of-your-venvs-in-one-place" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir ~/venvs/
+  <div class="section" id="what-is-in-our-venv">
+<h1>What is in our <code class="docutils literal notranslate"><span class="pre">venv</span></code>?<a class="headerlink" href="#what-is-in-our-venv" title="Permalink to this headline">¶</a></h1>
+<p>When we create a <code class="docutils literal notranslate"><span class="pre">venv</span></code>:</p>
+<ul class="simple">
+<li><p>We have a “fresh” minimal python environment.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">venv</span></code> contains several executable programs in its own directory.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m venv ~/venvs/test_venv
+kevin@pop-os:~/src/ComputerSkills4GradStudents$ <span class="nb">source</span> ~/venvs/test_venv/bin/activate
+<span class="o">(</span>test_venv<span class="o">)</span> kevin@pop-os:~/src/ComputerSkills4GradStudents$ which python
+/home/kevin/venvs/test_venv/bin/python
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-a-venv">
-<h2>Create a venv<a class="headerlink" href="#create-a-venv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 -m venv ~/venvs/my_new_venv
+<p>In fact, our virtual environment contains several programs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ls -lhrt /home/kevin/venvs/test_venv/bin
 </pre></div>
 </div>
-</div>
-<div class="section" id="activate-your-new-venv">
-<h2>Activate your new venv<a class="headerlink" href="#activate-your-new-venv" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/venvs/my_new_venv/bin/activate
+<p>The output on my system is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>   <span class="mi">16</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">python3</span> <span class="o">-&gt;</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>    <span class="mi">7</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">python</span> <span class="o">-&gt;</span> <span class="n">python3</span>
+<span class="o">-</span><span class="n">rwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>  <span class="mi">253</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">easy_install</span><span class="o">-</span><span class="mf">3.8</span>
+<span class="o">-</span><span class="n">rwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>  <span class="mi">253</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">easy_install</span>
+<span class="o">-</span><span class="n">rwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>  <span class="mi">244</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">pip3</span><span class="mf">.8</span>
+<span class="o">-</span><span class="n">rwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>  <span class="mi">244</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">pip3</span>
+<span class="o">-</span><span class="n">rwxrwxr</span><span class="o">-</span><span class="n">x</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span>  <span class="mi">244</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">36</span> <span class="n">pip</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span> <span class="mf">8.7</span><span class="n">K</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span> <span class="n">Activate</span><span class="o">.</span><span class="n">ps1</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span> <span class="mf">2.4</span><span class="n">K</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span> <span class="n">activate</span><span class="o">.</span><span class="n">fish</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span> <span class="mf">1.3</span><span class="n">K</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span> <span class="n">activate</span><span class="o">.</span><span class="n">csh</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span> <span class="mi">1</span> <span class="n">kevin</span> <span class="n">kevin</span> <span class="mf">2.2</span><span class="n">K</span> <span class="n">Sep</span> <span class="mi">18</span> <span class="mi">13</span><span class="p">:</span><span class="mi">40</span> <span class="n">activate</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="deactivate">
-<h2>Deactivate<a class="headerlink" href="#deactivate" title="Permalink to this headline">¶</a></h2>
-<p>When you are done working:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>deactivate
-</pre></div>
-</div>
-<p>Another option is to simply close your terminal.</p>
-</div>
-<div class="section" id="removal">
-<h2>Removal<a class="headerlink" href="#removal" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -rf ~/venvs/my_new_venv
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="alternatives">
-<h1>Alternatives<a class="headerlink" href="#alternatives" title="Permalink to this headline">¶</a></h1>
-<p>You may put your venvs wherever you like.
-You just have to give the path to wherever you want it.
-To create one in your current working directory:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python -m venv venv_in_cwd
-</pre></div>
-</div>
-<p>All of the above still applies. Only the path has changed.</p>
-</div>
-<div class="section" id="questions">
-<h1>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
+<p>We see <code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">python3</span></code>, and our <code class="docutils literal notranslate"><span class="pre">activate</span></code> command used to “turn on” the <code class="docutils literal notranslate"><span class="pre">venv</span></code>.
+Our next section concerns <code class="docutils literal notranslate"><span class="pre">pip</span></code>.
+(We will ignore <code class="docutils literal notranslate"><span class="pre">easy_install</span></code>.)</p>
+<div class="section" id="what-we-learned">
+<h2>What we learned<a class="headerlink" href="#what-we-learned" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>The command shown above for removing a venv is dangerous!
-What is the difference between the following two commands?</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -f ~/venvs/my_new_venv
+<li><p>The <code class="docutils literal notranslate"><span class="pre">which</span></code> command returns the full path of a program.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">python</span></code> program in an <em>activated</em> <code class="docutils literal notranslate"><span class="pre">venv</span></code> is the one that will run when we say:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python
 </pre></div>
 </div>
-<p>and</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm -f ~/venvs
-</pre></div>
-</div>
+<p>on our command line.</p>
 </li>
 </ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -472,19 +423,19 @@ What is the difference between the following two commands?</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../venvs.html" title="previous page">
+        <a class="left-prev" href="management.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Python virtual environments</p>
+                <p class="prevnext-title">Management</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="description.html" title="next page">
+        <a class="right-next" href="installing.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">What is in our <code class="docutils literal notranslate"><span class="pre">venv</span></code>?</p>
+                <p class="prevnext-title">Installing new software</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
